@@ -1,0 +1,18 @@
+XLApp  --- Version 17.051.013
+Application d'estimation en construction pour Excel
+Tous droits réservés   2017 XLCie
+http://www.XLCie.net
+Sasha Bouchard - sasha.bouchard@gmail.com
+ 
+ 
+PROCEDURE 
+====================== 
+ 
+Insérer un logo pour vos rapports dans ce dossier
+La hauteur suggéré est de 64 px.
+Nom du logo : logo.png
+ 
+Insert a logo in this folder for report header
+Height suggested is 64 px.
+Name of logo : logo.png
+ 

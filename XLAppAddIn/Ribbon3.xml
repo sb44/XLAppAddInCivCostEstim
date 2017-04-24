@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI onLoad="Ribbon_Load" xmlns="http://schemas.microsoft.com/office/2006/01/customui">
+    <ribbon>
+        <tabs>
+            <tab id="tab2" label="VOLET DES TÂCHES">
+                <group id="group1" label="Afficher">
+                    <toggleButton id="toggleButton1" imageMso="TaskPanesMenu" onAction="toggleButton1_Click" screentip="Afficher/Masquer les tâches" supertip="Afficher/Masquer la barre des tâches vertical" label="Barre des tâches" size="large" />
+                    <separator id="separator1" />
+                    <checkBox id="checkBox1" label="checkBox1" />
+                    <checkBox id="checkBox2" label="checkBox2" />
+                    <dialogBoxLauncher>
+                        <button id="group1__btn" />
+                    </dialogBoxLauncher>
+                </group>
+            </tab>
+        </tabs>
+    </ribbon>
+</customUI>
