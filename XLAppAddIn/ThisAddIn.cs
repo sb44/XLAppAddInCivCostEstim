@@ -15,7 +15,9 @@ using System.Windows.Forms;
 
 namespace XLAppAddIn
 {
-    //
+    /// <summary>
+    /// 
+    /// </summary>
     [ComVisible(false)]
     [ClassInterface(ClassInterfaceType.None)]
 
