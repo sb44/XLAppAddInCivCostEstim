@@ -166,7 +166,7 @@ namespace XLAppAddIn {
             //Application.DoEvents();
 
             if (customTaskPane == null && ctpName.Length == 0)
-                customTaskPane = Globals.ThisAddIn.myCustomTaskPaneWPF;
+                customTaskPane = Globals.ThisAddIn.TaskPaneEstImposWPF;
             else if (ctpName.Length > 0)
                 customTaskPane = getCTPByName(ctpName);
 
@@ -194,12 +194,12 @@ namespace XLAppAddIn {
             switch (ctpName) {
                 case "XLApp - Estimation imposition":
 
-                    return Globals.ThisAddIn.myCustomTaskPaneWPF;
+                    return Globals.ThisAddIn.TaskPaneEstImposWPF;
                 case "test2":
 
-                    return Globals.ThisAddIn.myCustomTaskPaneWPF;
+                    return Globals.ThisAddIn.TaskPaneEstImposWPF;
                 default:
-                    return Globals.ThisAddIn.myCustomTaskPaneWPF;
+                    return Globals.ThisAddIn.TaskPaneEstImposWPF;
             }
         }
 
@@ -317,7 +317,7 @@ namespace XLAppAddIn {
         }
         public bool GetUserControlIsVisible()
         {
-            return Globals.ThisAddIn.TaskPane.Visible;
+            return Globals.ThisAddIn.TaskPaneInterfaceVert.Visible;
         }
         public void AdjustComboBoxLine(string indText)
         {
@@ -325,7 +325,7 @@ namespace XLAppAddIn {
         }
         public void ShowAppVertBar() //testing 11-12-2016 from vba
         {
-            Globals.ThisAddIn.TaskPane.Visible = !(Globals.ThisAddIn.TaskPane.Visible);
+            Globals.ThisAddIn.TaskPaneInterfaceVert.Visible = !(Globals.ThisAddIn.TaskPaneInterfaceVert.Visible);
             //Globals.ThisAddIn.Application.Run("resizeWindow");
         }
         public void ToggleAppVerifProjet()

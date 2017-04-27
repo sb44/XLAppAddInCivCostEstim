@@ -80,7 +80,7 @@ namespace XLAppAddIn
                 return;
             }
 
-            Globals.ThisAddIn.TaskPane.Visible = ((RibbonToggleButton)sender).Checked;
+            Globals.ThisAddIn.TaskPaneInterfaceVert.Visible = ((RibbonToggleButton)sender).Checked;
             
 
 
@@ -107,10 +107,10 @@ namespace XLAppAddIn
 
         public static void ShowOrHideUserControl()  // static allows it to be called from other class
         {
-            if (Globals.ThisAddIn.TaskPane.Visible == true)
-                Globals.ThisAddIn.TaskPane.Visible = false;
+            if (Globals.ThisAddIn.TaskPaneInterfaceVert.Visible == true)
+                Globals.ThisAddIn.TaskPaneInterfaceVert.Visible = false;
             else
-                Globals.ThisAddIn.TaskPane.Visible = true;
+                Globals.ThisAddIn.TaskPaneInterfaceVert.Visible = true;
         }
 
         public static void HideUserControl()  // static allows it to be called from other class
@@ -122,18 +122,18 @@ namespace XLAppAddIn
             Globals.Ribbons.ManageTaskPaneRibbon.groupGestProjet.Visible = false;
             Globals.Ribbons.ManageTaskPaneRibbon.groupRessources.Visible = false;
             
-            Globals.ThisAddIn.TaskPane.Visible = false;
+            Globals.ThisAddIn.TaskPaneInterfaceVert.Visible = false;
         }
 
         public static void ShowUserControl()  // static allows it to be called from other class
         {
-                Globals.ThisAddIn.TaskPane.Visible = true;
+                Globals.ThisAddIn.TaskPaneInterfaceVert.Visible = true;
 
 
         }
         public static int GetUserControlWidth()  // static allows it to be called from other class
         {
-            return Globals.ThisAddIn.TaskPane.Width;
+            return Globals.ThisAddIn.TaskPaneInterfaceVert.Width;
 
         }
         // set ribbon text caused by a change in VBA
