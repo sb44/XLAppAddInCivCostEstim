@@ -60,14 +60,45 @@ namespace XLAppAddIn
         private int wpfPaneHeight = 325;
 
 
-        public Microsoft.Office.Tools.CustomTaskPane myCustomTaskPane; //was private, test pour userControl Resize - SQL
-        public Microsoft.Office.Tools.CustomTaskPane myCustomTaskPaneInterfaceSousTrait;
-        public Microsoft.Office.Tools.CustomTaskPane myCustomTaskPaneVerificationProjet;
-        public Microsoft.Office.Tools.CustomTaskPane myCustomTaskPaneInterfaceData;
+        private Microsoft.Office.Tools.CustomTaskPane myCustomTaskPane; //was private, test pour userControl Resize - SQL
+        private Microsoft.Office.Tools.CustomTaskPane myCustomTaskPaneInterfaceSousTrait;
+        private Microsoft.Office.Tools.CustomTaskPane myCustomTaskPaneVerificationProjet;
+        private Microsoft.Office.Tools.CustomTaskPane myCustomTaskPaneInterfaceData;
 
-        public Microsoft.Office.Tools.CustomTaskPane myCustomTaskPaneWPF; // TESTWPF
+        private Microsoft.Office.Tools.CustomTaskPane myCustomTaskPaneWPFEstImp; // TESTWPF
 
         private AddInUtilities utilities;
+
+        // taskpane #1 : InterfaceVert
+        public Microsoft.Office.Tools.CustomTaskPane TaskPaneInterfaceVert {
+            get {
+                return myCustomTaskPane;
+            }
+        }
+        //test taskpane #2 : InteractSousTrait
+        public Microsoft.Office.Tools.CustomTaskPane TaskPaneInterfaceSousTrait {
+            get {
+                return myCustomTaskPaneInterfaceSousTrait;
+            }
+        }
+        //test taskpane #3 : VerifProjet
+        public Microsoft.Office.Tools.CustomTaskPane TaskPaneVerifProjet {
+            get {
+                return myCustomTaskPaneVerificationProjet;
+            }
+        }
+        //test taskpane #3 : VerifProjetTemp
+        public Microsoft.Office.Tools.CustomTaskPane TaskPaneInterfaceData {
+            get {
+                return myCustomTaskPaneInterfaceData;
+            }
+        }
+        //test taskpane #4 : VerifProjetTemp
+        public Microsoft.Office.Tools.CustomTaskPane TaskPaneEstImposWPF {
+            get {
+                return myCustomTaskPaneWPFEstImp;
+            }
+        }
 
 
         protected override object RequestComAddInAutomationService()
@@ -183,16 +214,16 @@ namespace XLAppAddIn
                     myUserControlWPF = new UserControl2(); // UserContron2.cs
                     width = myUserControlWPF.Width;
                     int height = myUserControlWPF.Height;
-                    myCustomTaskPaneWPF = this.CustomTaskPanes.Add(myUserControlWPF, "XLApp - Estimation imposition");
+                    myCustomTaskPaneWPFEstImp = this.CustomTaskPanes.Add(myUserControlWPF, "XLApp - Estimation imposition");
 
-                    myCustomTaskPaneWPF.DockPosition = Office.MsoCTPDockPosition.msoCTPDockPositionFloating;
+                    myCustomTaskPaneWPFEstImp.DockPosition = Office.MsoCTPDockPosition.msoCTPDockPositionFloating;
                     //myUserControlWPF.SizeChanged -= UserControl2_SizeChanged;
-                    myCustomTaskPaneWPF.Height = height + 45;
-                    myCustomTaskPaneWPF.Width = width + 15;
+                    myCustomTaskPaneWPFEstImp.Height = height + 45;
+                    myCustomTaskPaneWPFEstImp.Width = width + 15;
 
-                    myCustomTaskPaneWPF.DockPositionRestrict = Office.MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoChange;
+                    myCustomTaskPaneWPFEstImp.DockPositionRestrict = Office.MsoCTPDockPositionRestrict.msoCTPDockPositionRestrictNoChange;
 
-                    myCustomTaskPaneWPF.Control.SizeChanged += new EventHandler(Control_SizeChanged);
+                    myCustomTaskPaneWPFEstImp.Control.SizeChanged += new EventHandler(Control_SizeChanged);
                     //myCustomTaskPaneWPF.Control.MinimumSize = new System.Drawing.Size(100, 100);
                     //myCustomTaskPaneWPF.Control.MaximumSize = new System.Drawing.Size(myCustomTaskPaneWPF.Width, myCustomTaskPaneWPF.Height);
 
@@ -221,33 +252,33 @@ namespace XLAppAddIn
 
         private void Control_SizeChanged(object sender, EventArgs e) {
 
-            if (myCustomTaskPaneWPF.Height > wpfPaneHeight && myCustomTaskPaneWPF.Width > wpfPaneWidth) {
+            if (myCustomTaskPaneWPFEstImp.Height > wpfPaneHeight && myCustomTaskPaneWPFEstImp.Width > wpfPaneWidth) {
                 Globals.ThisAddIn.Application.Cursor = Microsoft.Office.Interop.Excel.XlMousePointer.xlWait;
-                Globals.ThisAddIn.Application.SendKeys("{ESC}", true);   
+                Globals.ThisAddIn.Application.SendKeys("{ESC}", true);
                 //myCustomTaskPaneWPF.Control.SizeChanged -= new EventHandler(Control_SizeChanged);
-                myCustomTaskPaneWPF.Height = wpfPaneHeight;
-                myCustomTaskPaneWPF.Width = wpfPaneWidth;
+                myCustomTaskPaneWPFEstImp.Height = wpfPaneHeight;
+                myCustomTaskPaneWPFEstImp.Width = wpfPaneWidth;
                 //System.Windows.Forms.Application.DoEvents();
                 //DoMouseUp();
                 Globals.ThisAddIn.Application.Cursor = Microsoft.Office.Interop.Excel.XlMousePointer.xlDefault;
 
                 //myCustomTaskPaneWPF.Control.SizeChanged += new EventHandler(Control_SizeChanged);
-            } else if (myCustomTaskPaneWPF.Height > wpfPaneHeight) {
+            } else if (myCustomTaskPaneWPFEstImp.Height > wpfPaneHeight) {
                 Globals.ThisAddIn.Application.Cursor = Microsoft.Office.Interop.Excel.XlMousePointer.xlWait;
                 Globals.ThisAddIn.Application.SendKeys("{ESC}", true);
                 //myCustomTaskPaneWPF.Control.SizeChanged -= new EventHandler(Control_SizeChanged);
-                myCustomTaskPaneWPF.Height = wpfPaneHeight;
+                myCustomTaskPaneWPFEstImp.Height = wpfPaneHeight;
                 //System.Windows.Forms.Application.DoEvents();
                 //DoMouseUp();
                 Globals.ThisAddIn.Application.Cursor = Microsoft.Office.Interop.Excel.XlMousePointer.xlDefault;
 
                 //myCustomTaskPaneWPF.Control.SizeChanged += new EventHandler(Control_SizeChanged);
-            } else if (myCustomTaskPaneWPF.Width > wpfPaneWidth) {
+            } else if (myCustomTaskPaneWPFEstImp.Width > wpfPaneWidth) {
                 Globals.ThisAddIn.Application.Cursor = Microsoft.Office.Interop.Excel.XlMousePointer.xlWait;
                 Globals.ThisAddIn.Application.SendKeys("{ESC}", true);
-                
+
                 //myCustomTaskPaneWPF.Control.SizeChanged -= new EventHandler(Control_SizeChanged);
-                myCustomTaskPaneWPF.Width = wpfPaneWidth;
+                myCustomTaskPaneWPFEstImp.Width = wpfPaneWidth;
                 //System.Windows.Forms.Application.DoEvents();
                 //DoMouseUp();
                 //myCustomTaskPaneWPF.Control.SizeChanged += new EventHandler(Control_SizeChanged);
@@ -411,38 +442,6 @@ Office.MsoControlType.msoControlButton, missing, 2172, false, null);
         private void myCustomTaskPaneVerificationProjet_VisibleChanged(object sender, EventArgs e)
         {
             Globals.Ribbons.ManageTaskPaneRibbon.toggleButtonVerif.Checked = myCustomTaskPaneVerificationProjet.Visible;
-        }
-        // taskpane #1 : InterfaceVert
-        public Microsoft.Office.Tools.CustomTaskPane TaskPane
-        {
-            get
-            {
-                return myCustomTaskPane;
-            }
-        }
-        //test taskpane #2 : InteractSousTrait
-        public Microsoft.Office.Tools.CustomTaskPane TaskPaneInterfaceSousTrait
-        {
-            get
-            {
-                return myCustomTaskPaneInterfaceSousTrait;
-            }
-        }
-        //test taskpane #3 : VerifProjet
-        public Microsoft.Office.Tools.CustomTaskPane TaskPaneVerifProjet
-        {
-            get
-            {
-                return myCustomTaskPaneVerificationProjet;
-            }
-        }
-        //test taskpane #3 : VerifProjetTemp
-        public Microsoft.Office.Tools.CustomTaskPane TaskPaneInterfaceData
-        {
-            get
-            {
-                return myCustomTaskPaneInterfaceData;
-            }
         }
 
         #region VSTO generated code

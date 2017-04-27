@@ -270,12 +270,12 @@ namespace XLAppAddIn
         void MyUserControl_SizeChanged(object sender, EventArgs e)
             {
             
-            if (Globals.ThisAddIn.myCustomTaskPane != null && Globals.ThisAddIn.myCustomTaskPane.Visible && Globals.ThisAddIn.myCustomTaskPane.Width != PaneWidth)
+            if (Globals.ThisAddIn.TaskPaneInterfaceVert != null && Globals.ThisAddIn.TaskPaneInterfaceVert.Visible && Globals.ThisAddIn.TaskPaneInterfaceVert.Width != PaneWidth)
             {
                 Globals.ThisAddIn.Application.Cursor = Microsoft.Office.Interop.Excel.XlMousePointer.xlWait;
                 System.Windows.Forms.SendKeys.Send("{ESC}");
                 //Globals.ThisAddIn.myCustomTaskPane.Visible = false;
-                Globals.ThisAddIn.myCustomTaskPane.Width = PaneWidth;
+                Globals.ThisAddIn.TaskPaneInterfaceVert.Width = PaneWidth;
                 //Globals.ThisAddIn.myCustomTaskPane.Visible = true;
                 System.Windows.Forms.SendKeys.Send("{ESC}");
                 Globals.ThisAddIn.Application.Cursor = Microsoft.Office.Interop.Excel.XlMousePointer.xlDefault;
