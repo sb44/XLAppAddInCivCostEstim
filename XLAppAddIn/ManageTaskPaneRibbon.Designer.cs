@@ -142,6 +142,7 @@
             this.buttonMEP = this.Factory.CreateRibbonButton();
             this.separator8 = this.Factory.CreateRibbonSeparator();
             this.buttonAffMsqUnit = this.Factory.CreateRibbonButton();
+            this.buttonParamProjet = this.Factory.CreateRibbonButton();
             this.tab2.SuspendLayout();
             this.group1.SuspendLayout();
             this.groupGestProjet.SuspendLayout();
@@ -197,8 +198,9 @@
             this.groupGestProjet.Items.Add(this.buttonOuvrirP);
             this.groupGestProjet.Items.Add(this.buttonEnregP);
             this.groupGestProjet.Items.Add(this.buttonFermerProjet);
-            this.groupGestProjet.Items.Add(this.labelBogus);
+            this.groupGestProjet.Items.Add(this.buttonParamProjet);
             this.groupGestProjet.Items.Add(this.buttonEnregSous);
+            this.groupGestProjet.Items.Add(this.labelBogus);
             this.groupGestProjet.Label = "Gestionnaire de projets";
             this.groupGestProjet.Name = "groupGestProjet";
             this.groupGestProjet.Visible = false;
@@ -969,6 +971,14 @@
             this.buttonAffMsqUnit.ShowImage = true;
             this.buttonAffMsqUnit.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonAffMsqUnit_Click);
             // 
+            // buttonParamProjet
+            // 
+            this.buttonParamProjet.Label = "Paramètres Projet";
+            this.buttonParamProjet.Name = "buttonParamProjet";
+            this.buttonParamProjet.OfficeImageId = "TablesResetToDefault";
+            this.buttonParamProjet.ShowImage = true;
+            this.buttonParamProjet.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonParamProjet_Click);
+            // 
             // ManageTaskPaneRibbon
             // 
             this.Name = "ManageTaskPaneRibbon";
@@ -1097,6 +1107,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonCut;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonCopy;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonPaste;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonParamProjet;
     }
 
     partial class ThisRibbonCollection

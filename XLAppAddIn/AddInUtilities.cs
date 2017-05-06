@@ -271,6 +271,10 @@ namespace XLAppAddIn {
             }
         }
 
+        internal static void ShowParamProjet() {
+            Globals.ThisAddIn.Application.Run("ShowParamProjet");
+        }
+
         internal static void LaunchApp()
         {
             Globals.ThisAddIn.Application.Cursor = Microsoft.Office.Interop.Excel.XlMousePointer.xlWait;

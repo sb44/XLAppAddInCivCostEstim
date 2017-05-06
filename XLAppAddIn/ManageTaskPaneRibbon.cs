@@ -338,5 +338,9 @@ namespace XLAppAddIn
         {
             AddInUtilities.AMCoutU();
         }
+
+        private void buttonParamProjet_Click(object sender, RibbonControlEventArgs e) {
+            AddInUtilities.ShowParamProjet();
+        }
     }
 }

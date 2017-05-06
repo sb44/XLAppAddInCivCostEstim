@@ -31,7 +31,7 @@
     <DefineConstants>VSTO40</DefineConstants>
     <IsWebBootstrapper>False</IsWebBootstrapper>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <PublishUrl>C:\Users\SB13\OneDrive\XLAppPublishTest\</PublishUrl>
+    <PublishUrl>ftp://107.179.244.244:9878/</PublishUrl>
     <InstallUrl />
     <TargetCulture>fr</TargetCulture>
     <ApplicationVersion>1.0.0.8</ApplicationVersion>
