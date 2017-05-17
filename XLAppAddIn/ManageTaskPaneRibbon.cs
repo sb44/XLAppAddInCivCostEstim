@@ -50,8 +50,9 @@ namespace XLAppAddIn
                 if (!File.Exists(userProfile + "\\Desktop\\" + "XLApp" + ".lnk")) { 
                     // code si aucun raccourci sur le bureau :
                 AddInUtilities.InitiateFirstLaunch();
-                System.Windows.MessageBox.Show("Pour utiliser l'application, veuillez lancer le raccourci par votre bureau ou par le menu démarrer.", "XLApp");
 
+                if (File.Exists(userProfile + "\\Desktop\\" + "XLApp" + ".lnk"))
+                    System.Windows.MessageBox.Show("Pour utiliser l'application, veuillez lancer le raccourci par votre bureau ou par le menu démarrer.", "XLApp");
                 
                 Globals.Ribbons.ManageTaskPaneRibbon.tab2.Visible = false;
                 AddInUtilities.UnConnectAddin();
