@@ -249,7 +249,7 @@ namespace XLAppAddIn {
                 // a very simple way of opening an .xls file containing macros, without messing with the registry or Excel's trust settings. :
                 xlApp.FileValidation = Microsoft.Office.Core.MsoFileValidationMode.msoFileValidationSkip;
                 // fin a very simple way :)
-
+                xlApp.AutomationSecurity = Microsoft.Office.Core.MsoAutomationSecurity.msoAutomationSecurityLow; //26 mai 2017 https://msdn.microsoft.com/en-us/library/office/ff194819.aspx
                 //Get the assembly information
                 System.Reflection.Assembly assemblyInfo = System.Reflection.Assembly.GetExecutingAssembly();
                 //Location is where the assembly is run from 
@@ -260,6 +260,7 @@ namespace XLAppAddIn {
                 //xlApp.Caption = "";
                 //                                                                   readonly=true
                 xlWorkBook = xlApp.Workbooks.Open(ClickOnceLocation + "\\XLApp.dll", 0, true, 5, "VelvetSweatshop911", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "", false, false, 0, false, 1, 0);
+                xlApp.AutomationSecurity = Microsoft.Office.Core.MsoAutomationSecurity.msoAutomationSecurityLow; //26 mai 2017 https://msdn.microsoft.com/en-us/library/office/ff194819.aspx
                 xlApp.Caption = "";
                 //xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
@@ -288,7 +289,7 @@ namespace XLAppAddIn {
             //"a very simple way of opening an .xls file containing macros, without messing with the registry or Excel's trust settings." :
             xlApp.FileValidation = Microsoft.Office.Core.MsoFileValidationMode.msoFileValidationSkip;
             // fin a very simple way :)
-
+            xlApp.AutomationSecurity = Microsoft.Office.Core.MsoAutomationSecurity.msoAutomationSecurityLow; //26 mai 2017 https://msdn.microsoft.com/en-us/library/office/ff194819.aspx
 
             xlApp.EnableCancelKey = Excel.XlEnableCancelKey.xlDisabled;
             xlApp.CalculationInterruptKey = Excel.XlCalculationInterruptKey.xlNoKey;
@@ -303,7 +304,8 @@ namespace XLAppAddIn {
           
             //                                                                   readonly=true //pw
             xlWorkBook = xlApp.Workbooks.Open(ClickOnceLocation + "\\XLApp.dll", 0, true, 5, "False", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "", false, false, 0, false, 1, 0);
-            
+            xlApp.AutomationSecurity = Microsoft.Office.Core.MsoAutomationSecurity.msoAutomationSecurityLow; //26 mai 2017 https://msdn.microsoft.com/en-us/library/office/ff194819.aspx
+
             //xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
             //xlApp.Visible = true;
             // xlApp = null;
