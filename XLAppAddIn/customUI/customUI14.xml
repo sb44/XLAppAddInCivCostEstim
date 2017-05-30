@@ -1,0 +1,884 @@
+﻿<customUI onLoad="RibbonLoaded_XLApp" xmlns="http://schemas.microsoft.com/office/2009/07/customui">
+  <ribbon startFromScratch="true">
+	        <qat>
+          <sharedControls>
+			  <control idMso="PointerModeOptions"/>
+		  <separator id="sepQAT00" insertBeforeMso="PointerModeOptions" visible="true"/>
+		  <separator id="sepQAT0" insertBeforeMso="PointerModeOptions" visible="true"/>
+		  <separator id="sepQAT" insertAfterMso="PointerModeOptions" visible="true"/>
+			  <control idMso="GroupAddInsMenuCommands" insertAfterMso="PointerModeOptions" visible="true"/>
+			  <control idMso="GroupAddInsCustomToolbars" insertAfterMso="PointerModeOptions" visible="true"/>
+		  <separator id="sepQAT01" insertAfterMso="PointerModeOptions" visible="true"/>
+			  <control idMso="ViewMessageBar" insertAfterMso="GroupAddInsMenuCommands" label="XLApp - Application d'estimation en construction, multi-plateformes et inter-applications Office 365. XLApp est une application pour Excel sur plateforme Windows en développement continue optimisé pour la suite Office 365. Exploitant la suite, XLApp assure rapidité, partage, fiabilité, sécurité et mobilité. Gagnez en précision et productivité à l'aide de fonctionnalités pour soumission. Affichez le vidéo d'aide à la fonctionnalité en sélectionnant les boutons correspondants dans le menu d'Aide identifié par l'icone d'aide (?)."/>	
+		  <separator id="sepQAT1" insertBeforeMso="ViewMessageBar" visible="true"/>
+	      	  <button id="FileNewTest" insertBeforeMso="ViewMessageBar" onAction="NouveauProjet" getEnabled="QATgetEnabled" getLabel="GetLabel" imageMso="NewXmlPage"/>
+	      	  <button id="FileCloseTest" insertBeforeMso="ViewMessageBar" onAction="FermerProjet" getEnabled="QATgetEnabled" getLabel="GetLabel" imageMso="CloseAllPages"/>
+			  <button id="FileOpenTest" insertBeforeMso="ViewMessageBar" onAction="OuvrirProj" getEnabled="QATgetEnabled" getLabel="GetLabel" imageMso="OpenFolder"/>
+	      	  <button id="FileSaveTest" insertBeforeMso="ViewMessageBar" onAction="Create_Tables_XLApp" getEnabled="QATgetEnabled" getLabel="GetLabel" imageMso="FileSave"/>
+	      	  <button id="FileSaveAsTest" insertBeforeMso="ViewMessageBar" onAction="Create_Tables_XLApp_As_New" getEnabled="QATgetEnabled" getLabel="GetLabel" imageMso="FileSaveAs"/>
+		  <separator id="sepQAT2" insertBeforeMso="ViewMessageBar" visible="true"/>
+			  <button id="QATPaste" insertBeforeMso="ViewMessageBar" onAction="DoPaste" getEnabled="QATgetEnabled" getLabel="GetLabel" imageMso="Paste"/>
+			  <button id="QATCopy" insertBeforeMso="ViewMessageBar" onAction="DoCopy" getEnabled="QATgetEnabled" getLabel="GetLabel" imageMso="Copy"/>
+			  <button id="QATCut" insertBeforeMso="ViewMessageBar" onAction="DoCut" getEnabled="QATgetEnabled" getLabel="GetLabel" imageMso="Cut"/>
+			  <button id="QATClearClip" insertBeforeMso="ViewMessageBar" onAction="ClearClipBoard" getEnabled="QATgetEnabled" getLabel="GetLabel" imageMso="PasteInk"/>
+		  <separator id="sepQAT3" insertBeforeMso="ViewMessageBar" visible="true"/>
+			   <button id="QATFirst" insertBeforeMso="ViewMessageBar" onAction="GoToArtFromQAT" tag="1" getEnabled="QATgetEnabled" getLabel="GetLabel" imageMso="GoRtlDown"/>
+			  <button id="QATPrevious" insertBeforeMso="ViewMessageBar" onAction="GoToArtFromQAT" tag="2" getEnabled="QATgetEnabled" getLabel="GetLabel" imageMso="ScreenNavigatorBack"/>
+			  <button id="QATNext" insertBeforeMso="ViewMessageBar" onAction="GoToArtFromQAT" tag="3" getEnabled="QATgetEnabled" getLabel="GetLabel" imageMso="ScreenNavigatorForward"/>
+			  <button id="QATLast" insertBeforeMso="ViewMessageBar" onAction="GoToArtFromQAT" tag="4" getEnabled="QATgetEnabled" getLabel="GetLabel" imageMso="GoLtrDown"/> 
+		  <separator id="sepQAT4" insertBeforeMso="ViewMessageBar" visible="true"/> 
+			  <button id="QATRefresh" insertBeforeMso="ViewMessageBar" onAction="MacroRétablirArticles" getEnabled="QATgetEnabled" getLabel="GetLabel" imageMso="RefreshData"/>
+			  <button id="QATVerifProjet" insertBeforeMso="ViewMessageBar" onAction="ToggleAppVerifProjetInCSharp" getEnabled="QATgetEnabled" getLabel="GetLabel" imageMso="ReviseContents"/>
+		  <separator id="sepQAT5" insertBeforeMso="ViewMessageBar" visible="true"/>
+            <button id="QATWPFWindowEstImp" insertBeforeMso="ViewMessageBar" onAction="SetCustomPanePositionWhenFloating" enabled="true" tag="XLApp - Estimation imposition" label="Estimation imposition" imageMso="DollarSign"/>  <!--  à reviser -->
+			  <button id="QATConversions" insertBeforeMso="ViewMessageBar" onAction="ShowConversionsModule" getEnabled="QATgetEnabled" getLabel="GetLabel" imageMso="GroupCalculation"/>
+			  <button id="QATSearch"  insertBeforeMso="ViewMessageBar" onAction="SearchSTD" getEnabled="QATgetEnabled" getLabel="GetLabel" imageMso="InstantSearch"/>
+		  <separator id="sepQAT6" insertBeforeMso="ViewMessageBar" visible="true"/>
+			  <button id="QATHelp" insertBeforeMso="ViewMessageBar" onAction="FichierTab" getEnabled="QATgetEnabled" getLabel="GetLabel" imageMso="Help"/>
+			  <button id="QATKeyboard" insertBeforeMso="ViewMessageBar" onAction="ShowRacourcis" getEnabled="QATgetEnabled" getLabel="GetLabel" imageMso="HelpKeyboardShortcuts"/>
+		  <separator id="sepQAT7" insertBeforeMso="ViewMessageBar" visible="true"/>
+		  <separator id="sepQAT8" insertBeforeMso="ViewMessageBar" visible="true"/>
+		  <separator id="sepQAT9" insertBeforeMso="ViewMessageBar" visible="true"/>
+          </sharedControls>
+        </qat>
+  	  <contextualTabs>
+		  <!--  désactivation pour right click shape -->
+      	  <tabSet idMso="TabSetDrawingTools" visible="false"/> 
+    	  </contextualTabs>
+        <tabs >
+  <tab id="MyBogusTab0" label="...         ..." insertAfterMso="TabFormulas" visible="true" >
+          <group id="CustomGroup00" label="  Application Excel O365" insertBeforeMso="GroupAddInsMenuCommands" >
+            <toggleButton id="customToggleButton00" getLabel="GetLabel" size="large" onAction="Macro00r" getImage="GetImage" getPressed="UpOrDown"/>                   
+          </group>
+  </tab >
+  <tab id="MyBogusTab1" label="...         ..." insertAfterMso="TabHome" visible="true" >
+          <group id="CustomGroup4" label="  Application Excel O365" insertBeforeMso="GroupAddInsMenuCommands" >
+            <toggleButton id="customToggleButton4" getLabel="GetLabel" size="large" onAction="Macro4r" getImage="GetImage" getPressed="UpOrDown"/>                   
+          </group>
+  </tab >
+  <tab id="MyBogusTab2" label="...         ..." insertAfterMso="TabPageLayoutExcel" visible="true">
+          <group id="CustomGroup5" label="  Application Excel O365" insertBeforeMso="GroupAddInsMenuCommands" >
+            <toggleButton id="customToggleButton5" getLabel="GetLabel" size="large" onAction="Macro5r" getImage="GetImage" getPressed="UpOrDown"/>                   
+          </group>
+  </tab >
+  <tab id="MyBogusTab3" label="...         ..." insertAfterMso="TabView" visible="true">
+          <group id="CustomGroup6" label="  Application Excel O365" insertBeforeMso="GroupAddInsMenuCommands" >
+            <toggleButton id="customToggleButton6" getLabel="GetLabel" size="large" onAction="Macro6r" getImage="GetImage" getPressed="UpOrDown"/>                   
+          </group>
+  </tab >
+  <tab id="MyBogusTab4" label="...         ..." insertAfterMso="TabAddIns" visible="false">
+          <group id="CustomGroup6b" label="  Application Excel O365" insertBeforeMso="GroupAddInsMenuCommands" >
+            <toggleButton id="customToggleButton6b" getLabel="GetLabel" size="large" onAction="Macro6r" getImage="GetImage" getPressed="UpOrDown"/>                   
+          </group>
+  </tab >
+	   <!--  <tab idMso="TabDrawingToolsFormat" visible="false"/> -->
+          <tab idMso="TabDeveloper" visible="false"/>
+          <tab idMso="TabHome" visible="false"/>
+          <tab idMso="TabInsert" visible="false"/>
+          <tab idMso="TabPageLayoutExcel" visible="true"/>
+          <tab idMso="TabFormulas" visible="true"/>
+          <tab idMso="TabData" visible="false"/>
+          <tab idMso="TabReview" visible="false"/>
+          <tab idMso="TabView" visible="true"/>
+          <tab idMso="TabAddIns" visible="false"/>
+          <tab idMso="TabPrintPreview" visible="true"/>
+        <tab idMso="TabFormulas" >
+          <group idMso="GroupCalculation" visible="false"/>
+	    <group idMso="GroupNamedCells" visible="false"/>
+          <group id="CustomGroup0" label="  Application Excel O365" insertBeforeMso="GroupFunctionLibrary" >
+            <toggleButton id="customToggleButton0" getLabel="GetLabel" size="large" onAction="Macro0r" getImage="GetImage" getPressed="UpOrDown"/>                   
+          </group>
+	  <group idMso="GroupFunctionLibrary" visible="false"/>
+	  <group idMso="GroupFormulaAuditing" visible="false"/> 
+        </tab >
+	
+  <!-- Point to the Built-in tab to the ribbon -->
+  <tab idMso="TabFormulas"> 
+
+  <!-- Add Function Library group -->
+  <group id="DupFunctionLibrary" getLabel="GetLabel" insertBeforeMso="GroupFunctionLibrary" > <!--label="Bibliothèque de fonctions"-->
+		  <gallery id="rxgal"
+                     getLabel="GetLabel" columns="1" rows="10"
+                     imageMso="ProjectCalculate"
+			   getEnabled="OnGetrxgalEnabled"
+                     getItemCount="rxgal_getItemCount"
+                     getItemLabel="rxgal_getItemLabel"
+                     getItemScreentip="rxgal_getItemScreentip"
+			   getItemSupertip="rxgal_getItemSupertip"
+                     onAction="rxgal_Click"
+                     showItemLabel="true"
+                     size="large">										<!--label="Fonctions XLApp"-->
+		  <!-- Insert a button at the end of the gallery.-->					
+              <button id="rxbtn"
+                      imageMso="FunctionWizard"
+                      getLabel="GetLabel"
+                      onAction="rxbtn_Click"/>								 <!--label="Insérer une fonction..."	 -->
+       </gallery>
+	  <separator id="FF1Ninj" /> 
+	  <button idMso="FunctionWizard" size="large" />
+	  <separator id="FF1" /> 
+	  <splitButton idMso="AutoSumMenu" size="large" />
+	  <gallery idMso="FunctionsRecentlyUsedtInsertGallery" size="large" />
+	  <gallery idMso="FunctionsFinancialInsertGallery" size="large" />
+	  <gallery idMso="FunctionsLogicalInsertGallery" size="large" />
+	  <gallery idMso="FunctionsTextInsertGallery" size="large" />
+	  <gallery idMso="FunctionsDateTimeInsertGallery" size="large" />
+	  <gallery idMso="FunctionsLookupReferenceInsertGallery" size="large" />
+	  <gallery idMso="FunctionsMathTrigInsertGallery" size="large" />
+	  <menu idMso="FormulaMoreFunctionsMenu" size="large" />
+  </group> 
+  </tab> 
+
+        <tab idMso="TabPageLayoutExcel" >
+	    <group idMso="GroupThemesExcel" visible="false"/>
+          <group idMso="GroupArrange" visible="false"/>
+          <group idMso="GroupNamedCells" visible="false"/>
+          <group id="CustomGroup1" label="  Application Excel O365" insertBeforeMso="GroupThemesExcel" >
+            <toggleButton id="customToggleButton1" getLabel="GetLabel" size="large" onAction="Macro1r" getImage="GetImage" getPressed="UpOrDown"/>                   
+          </group>
+        </tab >
+        <tab idMso="TabView" >
+	  	  <group idMso="GroupWorkbookViews" visible="false"/>
+	  <!-- To Hide:
+	   button ViewCustomViews
+	   toggleButton ViewPageLayoutView
+	  -->
+	  <group id="DupGroupWorkbookViews" label="Modes" insertAfterMso="GroupWorkbookViews" visible="true"> <!--afficher ou view id=DupGroupWorkbookViews -->
+		  <!--ViewNormalViewExcel			toggleButton	None (Core Tab)	TabView	GroupWorkbookViews
+		  ViewPageBreakPreviewView		toggleButton	None (Core Tab)	TabView	GroupWorkbookViews
+		  -ViewPageLayoutView				toggleButton	None (Core Tab)	TabView	GroupWorkbookViews
+		  -ViewCustomViews					button	None (Core Tab)	TabView	GroupWorkbookViews -->
+			  <toggleButton idMso="ViewNormalViewExcel" size="large"/>
+			  <toggleButton idMso="ViewPageBreakPreviewView" size="large"/>
+	  </group>
+          <group idMso="GroupMacros" visible="false"/>
+          <group id="CustomGroup2" label="  Application Excel O365" insertBeforeMso="GroupWorkbookViews" >
+            <toggleButton id="customToggleButton2" getLabel="GetLabel" size="large" onAction="Macro2r" getImage="GetImage" getPressed="UpOrDown"/>                   
+          </group>
+	    <group idMso="GroupZoom" visible="false"/>
+	    <group id="DupGroupZoom" label="Zoom" insertBeforeMso="GroupWindow" >
+		  <button idMso="ZoomDialog" size="large" />
+		  <button idMso="ZoomCurrent100" size="large" />
+	    </group>
+          <group id="CustomGroupView1" getLabel="GetLabel" insertBeforeMso="GroupZoom" centerVertically="true" >			<!--label="Afficher menus XLApp-->
+			  <box id="boxGV1" boxStyle="horizontal" >
+	                    <checkBox id="checkBox1" getLabel="GetLabel" onAction="MacroMenuRibbon" getPressed="getPressed"/>  <!--label="Menu Ruban          "-->
+			  </box>
+			  <box id="boxGV1bogus" boxStyle="horizontal" >
+			  </box>
+			  <box id="boxGV1b" boxStyle="horizontal" >
+				  <checkBox id="checkBox2" getLabel="GetLabel" onAction="MacroMenuUserControl" getPressed="getPressed"/>   <!--label="Barre des Tâches    "-->
+			  </box>
+	  </group>
+          <group id="CustomGroupView2" label="Bordereau Plan" insertBeforeMso="GroupZoom" centerVertically="true" >
+			  <box id="boxGV2" boxStyle="horizontal" >
+                      <button id="CustomGroupView1B1" getLabel="GetLabel" screentip="Activer vue plan" supertip="Cliquer pour activer la vue des articles saisies au Bordereau en mode plan" onAction="OutlineExpandAll" imageMso="OutlineExpandAll" getEnabled="OnGetrxgalEnabled"/> <!--label="Activer vue plan"-->	
+			    <button id="CustomGroupView1B3" getLabel="GetLabel" screentip="Afficher niveau" supertip="Cliquer pour afficher un niveau supérieur du Bordereau en mode plan" onAction="OutlineShowDetail" imageMso="OutlineShowDetail" getEnabled="OnGetrxgalEnabled"/> <!--label="Activer vue plan"-->
+			  </box>
+			  <box id="boxGV2bogus" boxStyle="horizontal" >
+			  </box>
+		       <box id="boxGV3" boxStyle="horizontal" >
+		          <button id="CustomGroupView1B2" getLabel="GetLabel" screentip="Fermer vue plan" supertip="Cliquer pour fermer la vue des articles saisies au Bordereau en mode plan" onAction="OutlineViewClose" imageMso="OutlineViewClose" getEnabled="OnGetrxgalEnabled"/> <!--label="Fermer vue plan "-->
+			    <button id="CustomGroupView1B4" getLabel="GetLabel" screentip="Masquer niveau" supertip="Cliquer pour masquer un niveau supérieur du Bordereau en mode plan" onAction="OutlineHideDetail" imageMso="OutlineHideDetail" getEnabled="OnGetrxgalEnabled"/> <!--label="Masquer niveau"-->
+			  </box>
+	  </group>
+	  <group idMso="GroupWindow" visible="false"/>
+		  <!-- To Hide:
+		  ViewFreezePanesGallery 	gallery
+		  WindowSplitToggle		toggleButton
+		  WindowHide				button
+		  WindowUnhide			button -->
+	  <group id="DupGroupWindow" label="Window" insertBeforeMso="GroupWindow" visible="true">
+		  <!--WindowNew								button	None (Core Tab)	TabView	GroupWindow
+		  WindowsArrangeAll							button	None (Core Tab)	TabView	GroupWindow
+		  -ViewFreezePanesGallery						gallery	None (Core Tab)	TabView	GroupWindow
+		  -WindowSplitToggle							toggleButton	None (Core Tab)	TabView	GroupWindow
+		  -WindowHide									button	None (Core Tab)	TabView	GroupWindow
+		  -WindowUnhide								button	None (Core Tab)	TabView	GroupWindow
+		  ViewSideBySide								toggleButton	None (Core Tab)	TabView	GroupWindow
+		  WindowSideBySideSynchronousScrolling		toggleButton	None (Core Tab)	TabView	GroupWindow
+		  WindowResetPosition							button	None (Core Tab)	TabView	GroupWindow
+		  WindowSwitchWindowsMenuExcel				menu	None (Core Tab)	TabView	GroupWindow -->
+		  <button idMso="WindowNew" size="large"/>
+		  <button idMso="WindowsArrangeAll" size="large"/>
+		  <separator id="FF1DupGroupWindow"/>
+			  <toggleButton idMso="ViewSideBySide"/>
+			  <toggleButton idMso="WindowSideBySideSynchronousScrolling"/>
+			  <button idMso="WindowResetPosition"/>
+		  <separator id="FF1DupGroupWindow2"/>
+		  <menu idMso="WindowSwitchWindowsMenuExcel" size="large"/>
+	  </group>
+        </tab >
+        <tab idMso="TabAddIns" >
+	    <group idMso="GroupAddInsToolbarCommands" visible="false"/>
+          <group id="CustomGroup3" label="  Application Excel O365" insertBeforeMso="GroupAddInsMenuCommands" >
+            <toggleButton id="customToggleButton3" getLabel="GetLabel" size="large" onAction="Macro3r" getImage="GetImage" getPressed="UpOrDown"/>                   
+          </group>
+        </tab >
+        </tabs >
+      </ribbon >
+  <backstage>
+        <button idMso="FileSave" visible="false"/>
+        <button idMso="FileSaveAs" visible="false"/>
+        <button idMso="FileOpen" visible="false"/>
+        <button idMso="FileClose" visible="false"/>
+        <button idMso="ApplicationOptionsDialog" visible="false"/>
+        <button idMso="FileExit" visible="false"/>
+        <tab idMso="TabNew" visible="false"/>
+        <tab idMso="TabInfo" visible="false"/>
+        <tab idMso="OfficeStart" visible="false"/>
+        <tab idMso="TabRecent" visible="false"/>
+        <tab idMso="TabPrint" visible="true"/>
+        <tab idMso="TabShare" visible="false"/>
+        <tab idMso="TabPublish" visible="false"/>
+        <tab idMso="TabSave" visible="false"/>
+        <tab idMso="TabOfficeStart" visible="false"/>
+        <tab idMso="TabExport" visible="false"/>
+        <tab idMso="TabPublish" visible="false"/>
+        <tab idMso="Publish2Tab" visible="false"/>
+        <tab idMso="TabHelp" visible="true"/>
+        <button idMso="HistoryTab" visible="false"/>
+        <button idMso="ApplicationOptionsDialog" visible="false"/>
+	      <button idMso="OfficeFeedback" visible="false"/>
+        <tab id="tabPropos" insertBeforeMso="FileSave" getTitle="GetTitle" getLabel="GetLabelBS">
+
+              <firstColumn>
+                  <group id="FirstGroup" label="Application Excel Office 365" helperText="Application d'estimation en construction, multi-plateformes et inter-applications Office 365">
+                      <primaryItem>
+                          <button id="BigButtonBS" label="XLApp" onAction="PrimaryMacro" getImage="GetImageBS"/>
+                      </primaryItem>
+                      <topItems>
+                          <layoutContainer id="layout1" layoutChildren="vertical">
+				      <labelControl id="Excel1" label=" "/>
+	  <layoutContainer id="layout101b12Ninjaz" layoutChildren="horizontal">
+		  <button id="Button12" label="Excel " onAction="PrimaryMacro" imageMso="MicrosoftExcel"/>
+		  <imageControl id="imageSBButton11aNinjaz" imageMso="LinkTasksMenu"/>
+		  <button id="Button12ProjAz" label="Project" onAction="PrimaryMacro" imageMso="MicrosoftProject"/>
+		  <labelControl id="MSProjectNote" label="*"/>
+  </layoutContainer>
+				  <layoutContainer id="layout101b12" layoutChildren="horizontal">
+                              <button id="Button11" label="Access  " onAction="PrimaryMacro" imageMso="MicrosoftAccess"/>
+					  <imageControl id="imageSBButton11a" imageMso="LinkTasksMenu"/>
+                              <button id="Button11b" label="SQL" onAction="PrimaryMacro" imageMso="SqlSpecificMenu2"/>
+				  </layoutContainer>
+                              <!-- <button id="Button14" label="Project " onAction="PrimaryMacro" imageMso="MicrosoftProject"/> -->
+				  <layoutContainer id="layout101b12Email" layoutChildren="horizontal">
+					  <button id="ButtonGmail32" label="Gmail" onAction="PrimaryMacro" getImage="GetImageBS"/> 
+						  <imageControl id="imageSBButton11aSP" imageMso="LinkTasksMenu"/>
+                              <button id="Button13" label="Outlook" onAction="PrimaryMacro" imageMso="MicrosoftOutlook"/>
+				  </layoutContainer>
+					  <layoutContainer id="layout101b12WrdOD" layoutChildren="horizontal"> 
+				      <button id="Button13Word" label="Word " onAction="PrimaryMacro" imageMso="MindMapExportWord"/>
+					  <imageControl id="imageSBButton11aSPazz" imageMso="LinkTasksMenu"/>
+                              <button id="Button10" label="OneDrive" onAction="PrimaryMacro" getImage="GetImageBS"/>
+				  </layoutContainer>
+                              <labelControl id="Google1" label=" "/>
+                              <button id="Button17" label="Google Maps" onAction="PrimaryMacro" getImage="GetImageBS"/>
+			     <layoutContainer id="layoutSubSB1" layoutChildren="horizontal">
+				  <imageControl id="imageSB1" imageMso="BrowseSelector"/>
+				  <labelControl id="LabelButton17" label="Google Maps API **"/>
+                       </layoutContainer>
+  <labelControl id="Google1space" label=" "/>
+                              <button id="Button16" label="Acrobat Pro" onAction="PrimaryMacro" getImage="GetImageBS"/>
+			     <layoutContainer id="layoutSubSB2" layoutChildren="horizontal">
+				  <imageControl id="imageSB2" imageMso="BrowseSelector"/>
+				  <labelControl id="LabelButton16" label="Adobe Acrobat Pro API ***"/>
+                        </layoutContainer>
+  <labelControl id="Acrobat1Space" label=" "/>
+                              <button id="Button15" label="TeamViewer" onAction="PrimaryMacro" getImage="GetImageBS"/>
+			     <layoutContainer id="layoutSubSB3" layoutChildren="horizontal">
+				      <imageControl id="imageSB3" imageMso="BrowseSelector"/>
+                              <labelControl id="LabelButton15" label="Support à distance Windows, Android, iOS"/>
+                        </layoutContainer>
+				  <layoutContainer id="layoutSubSB3b3" layoutChildren="horizontal">
+				      <imageControl id="imageSB3b3" imageMso="BrowseSelector"/>
+                              <labelControl id="LabelButton15b3" label="Logiciel recommandé en continuum mobile"/>
+                        </layoutContainer>
+                          </layoutContainer>
+                      </topItems>
+                  </group>
+                  <group id="SecondGroup" getLabel="GetLabelBS" helperText="XLApp est une application pour Excel sur plateforme Windows en développement continue optimisé pour la suite Office 365. Exploitant la suite, XLApp assure rapidité, partage, fiabilité, sécurité et mobilité."> <!--label="À propos d' XLApp"-->
+                      <primaryItem>
+                          <button id="BigButtonLS" label="XLCie" onAction="PrimaryMacro" getImage="GetImageBS"/>
+                      </primaryItem>                    
+                      <topItems>
+			     <layoutContainer id="layout20" layoutChildren="vertical">
+					      <labelControl id="XLApp1" label=" "/>
+				  <button id="ButtonVersion" label="XLApp" onAction="PrimaryMacro" getImage="GetImageBS"/>
+                          <layoutContainer id="layout201" layoutChildren="horizontal">
+					  <imageControl id="imageSB4" imageMso="BrowseSelector"/>
+					  <labelControl id="LabelButtonVersion" getLabel="CallbackGetLabel"/>
+				  </layoutContainer>
+					      <labelControl id="VisualStudio1" label=" "/>
+			  <layoutContainer id="layout2001test" layoutChildren="horizontal">
+	    			  <button id="Button2001" label="Microsoft Visual Studio" onAction="PrimaryMacro" imageMso="CodeEditor"/>
+					  <imageControl id="imageSBButton2001a" imageMso="LinkTasksMenu"/>
+                              <button id="ButtonDotNet" label="Microsoft .NET" onAction="PrimaryMacro" getImage="GetImageBS"/>
+			  </layoutContainer>
+				  <layoutContainer id="layout202" layoutChildren="horizontal">
+					  <imageControl id="imageSB5" imageMso="BrowseSelector"/>
+					  <labelControl id="LabelButton2001" label="C#"/>
+					  <imageControl id="imageSB6" imageMso="BrowseSelector"/>
+					  <labelControl id="LabelButton2002" label="VBA7"/>
+					  <imageControl id="imageSB6sec" imageMso="BrowseSelector"/>
+					  <labelControl id="LabelButton2002sec" label="Delphi"/>
+					  <imageControl id="imageSB7" imageMso="BrowseSelector"/>
+					  <labelControl id="LabelButton2003" label="SQL"/>
+					  <imageControl id="imageSB8" imageMso="BrowseSelector"/>
+					  <labelControl id="LabelButton2004" label="XML"/>
+					  <imageControl id="imageSB8sbsb1" imageMso="BrowseSelector"/>
+					  <labelControl id="LabelButton2004sbsb1" label="VBS"/>
+				  </layoutContainer>
+					  <labelControl id="Labellayout202space" label=" "/>
+					  <layoutContainer id="layout202Notez" layoutChildren="horizontal">
+					  <imageControl id="imageSB9pf9Notes" imageMso="ShapeRightArrow"/>
+					  <labelControl id="Labellayout202space2" label="Notes :"/>
+					  </layoutContainer>
+						  <labelControl id="Labellayout202spaceB" label=" "/>
+						  <layoutContainer id="layout202Notes" layoutChildren="horizontal">
+							  <imageControl id="layout202NotesSel1" imageMso="ShapeStar"/>
+							  <labelControl id="Labellayout202sA" label=","/>
+						  </layoutContainer>
+						  <layoutContainer id="layout202Notes2" layoutChildren="horizontal">
+							  <imageControl id="layout202NotesSel2" imageMso="ShapeStar"/>
+							  <imageControl id="layout202NotesSel3" imageMso="ShapeStar"/>
+							  <labelControl id="Labellayout202sB" label=","/>
+						  </layoutContainer>
+						  <layoutContainer id="layout202Notes3" layoutChildren="horizontal">
+							  <imageControl id="layout202NotesSel23" imageMso="ShapeStar"/>
+							  <imageControl id="layout202NotesSel33" imageMso="ShapeStar"/>
+								  <imageControl id="layout202NotesSel34" imageMso="ShapeStar"/>
+								  <labelControl id="Labellayout202sBSHOWER" label=":"/>
+						  </layoutContainer>
+							  <layoutContainer id="layout202Notes4" layoutChildren="horizontal">
+							  <imageControl id="imageSB7NotezB" imageMso="BrowseSelector"/>
+							  <labelControl id="Labellayout202sC" label="Intégration des Modules séparés Project, Google Maps et Acrobat à prix séparé exclu sur demande."/>
+						  </layoutContainer>
+						
+                        </layoutContainer>
+                      </topItems>
+                  </group>
+              </firstColumn>
+
+              <secondColumn>
+                  <group id="ThirdGroup" getLabel="GetLabelBS" helperText="Gagnez en précision et productivité à l'aide de fonctionnalités pour soumission."> <!--label="Fonctionnalités d' XLApp"-->
+		    	  <topItems>
+				  <labelControl id="Label3blank" label=" "/>
+                     </topItems>
+			  </group>
+
+                  <group id="ThirdGroupPresenter" getLabel="GetLabelBS" helperText="Affichez le vidéo d'aide à la fonctionnalité en sélectionnant les boutons correspondants."> <!--label="Aide Vidéo"-->
+                      <primaryItem>
+   				   <menu id="BigButtonHelpSummary" getLabel="GetLabelBS" imageMso="ToolboxVideo" > <!--label="AIDE VIDÉO"-->
+      				  <menuGroup id="switchMenuGroupSummary">
+        			  <button id="BigButtonHelpSum1" getLabel="GetLabelBS" description="Cliquez pour afficher le vidéo exemple YouTube." onAction="PrimaryMacro" imageMso="ViewsDatasheetView"/> <!--label="SAISIE"-->
+				  <button id="BigButtonHelpSum2" getLabel="GetLabelBS" description="Cliquez pour afficher le vidéo exemple YouTube." onAction="PrimaryMacro" imageMso="ProjectCalculate"/> <!--label="CALCUL"-->
+				  <button id="BigButtonHelpSum3" getLabel="GetLabelBS" description="Cliquez pour afficher le vidéo exemple YouTube." onAction="PrimaryMacro" imageMso="ReportsProject"/> <!--label="RAPPORTS"-->
+     				 	  </menuGroup>
+      				  <menuGroup id="switchMenuGroupSummarySep">
+				  <button id="BigButtonHelpSumGl" getLabel="GetLabelBS" description="Cliquez pour afficher le vidéo exemple YouTube." onAction="PrimaryMacro" imageMso="ToolboxVideo"/> <!--label="Afficher le vidéo complet"-->
+     				 	  </menuGroup>
+  				   </menu>
+                      </primaryItem>		    	
+			  <topItems>
+				  <labelControl id="Label3blankPresenter" label=" "/>
+                     </topItems>
+		     </group>
+
+		     <group id="FourthGroup" getLabel="GetLabelBS" helperText="Produisez une soumission à l'aide des modules de Saisie rapide dans une interface sécuritaire et intelligente."> <!--label="Modules de Saisie"-->
+                      <primaryItem>
+   				   <menu id="BigButtonSAISIE" getLabel="GetLabelBS" imageMso="ViewsDatasheetView" > <!--label="SAISIE"-->
+      				  <menuGroup id="switchMenuGroupSAISIE">
+        			  <button id="Button208m" label="Insertion d'Article" description="Cliquez pour afficher le vidéo exemple YouTube." onAction="PrimaryMacro" imageMso="TableRowsInsertWord"/>
+				  <button id="Button211m" label="Insertion d'Assemblages" description="Cliquez pour afficher le vidéo exemple YouTube." onAction="PrimaryMacro" imageMso="PivotPlusMinusFieldHeadersShowHide"/>
+				  <button id="Button201m" label="Insertion d'Articles Assemblés" description="Cliquez pour afficher le vidéo exemple YouTube." onAction="PrimaryMacro" imageMso="SlideMasterTextPlaceholderInsert"/>
+				  <button id="Button202m" label="Importation de Bordereau" description="Cliquez pour afficher le vidéo exemple YouTube." onAction="PrimaryMacro" imageMso="OutlineSubtotals"/>
+				  <button id="Button209m" label="Suppression d'article" description="Cliquez pour afficher le vidéo exemple YouTube." onAction="PrimaryMacro" imageMso="Delete"/>
+				  <button id="Button206m" label="Ordonnancement des articles" description="Cliquez pour afficher le vidéo exemple YouTube." onAction="PrimaryMacro" imageMso="RecurrenceEdit"/>
+				  <button id="Button215m" label="Ouverture Excel sécurisé" description="Cliquez pour afficher le vidéo exemple YouTube." onAction="PrimaryMacro" imageMso="FileDocumentEncrypt"/>
+				  <button id="Button214m" label="Navigation intégré" description="Cliquez pour afficher le vidéo exemple YouTube." onAction="PrimaryMacro" imageMso="RightArrow2"/>
+				  <button id="Button212m" label="Paramètres d'entreprise et de projet" description="Cliquez pour afficher le vidéo exemple YouTube." onAction="PrimaryMacro" imageMso="BlogHomePage"/>
+     				 	  </menuGroup>
+      				  <menuGroup id="switchMenuGroupSAISIESep">
+				  <button id="BbSAISIEhelper" label="Afficher le vidéo complet" description="Cliquez pour afficher le vidéo exemple YouTube." onAction="PrimaryMacro" imageMso="ToolboxVideo"/>
+     				 	  </menuGroup>
+  				   </menu>
+			  </primaryItem>
+		    	  <topItems>
+                          <layoutContainer id="layout30" layoutChildren="vertical">
+	    				  <labelControl id="Module1" label=" "/>
+				  <button id="Button208" label="Insertion d'Article" onAction="PrimaryMacro" imageMso="TableRowsInsertWord"/>
+  <layoutContainer id="layout3008a" layoutChildren="horizontal">
+					  <imageControl id="imageSB16a" imageMso="BrowseSelector"/>  
+					  <labelControl id="LabelButton208a" label="Choix de base de données intégré, d'Allocation des Frais indirects et d'Inclusion de l'Assemblage"/>
+				      </layoutContainer>
+  <layoutContainer id="layout3008d" layoutChildren="horizontal">
+					  <imageControl id="imageSB16d" imageMso="BrowseSelector"/>  
+					  <labelControl id="LabelButton208d" label="Options de Take Off Rapide, de Saisie simple ou de Saisie électronique intégré"/>
+				      </layoutContainer>
+  <layoutContainer id="layout3008e" layoutChildren="horizontal">
+					  <imageControl id="imageSB16e" imageMso="BrowseSelector"/>  
+					  <labelControl id="LabelButton208e" label="Conversion des Unités"/>
+				      </layoutContainer>
+  <layoutContainer id="layout3008f" layoutChildren="horizontal">
+					  <imageControl id="imageSB16f" imageMso="BrowseSelector"/>  
+					  <labelControl id="LabelButton208f" label="Quantité Estimé et Quantité Bordereau"/>
+				      </layoutContainer>
+  <layoutContainer id="layout3008g" layoutChildren="horizontal">
+					  <imageControl id="imageSB16g" imageMso="BrowseSelector"/>  
+					  <labelControl id="LabelButton208g" label="Définition du type d'Article: Direct, Indirect, Prix Séparé Exclus, Provision pour Imprévus et Commentaire"/>
+				      </layoutContainer>
+  <layoutContainer id="layout3008h" layoutChildren="horizontal">
+					  <imageControl id="imageSB16h" imageMso="ShapeRightArrow"/>  
+					  <labelControl id="LabelButton208h" label="Module Séparé de l'Interface de calcul"/>
+  </layoutContainer>
+  <labelControl id="Module211" label=" "/>
+					  <button id="Button211" label="Insertion d'Assemblages" onAction="PrimaryMacro" imageMso="PivotPlusMinusFieldHeadersShowHide"/>
+  <layoutContainer id="layout3009a" layoutChildren="horizontal">
+					  <imageControl id="imageSB17b" imageMso="BrowseSelector"/>
+                              <labelControl id="LabelButton211b" label="Recherche par Projet, Sous-Projet et description d'Article"/>
+  </layoutContainer>
+  <layoutContainer id="layout3009b" layoutChildren="horizontal">
+					  <imageControl id="imageSB17c" imageMso="BrowseSelector"/>
+                              <labelControl id="LabelButton211c" label="Saisie ventilé avant insertion"/>
+  </layoutContainer>
+  <layoutContainer id="layout3009c" layoutChildren="horizontal">
+					  <imageControl id="imageSB17d" imageMso="BrowseSelector"/>
+                              <labelControl id="LabelButton211d" label="Paramétrage des productions, des Assemblages et des Sous-Assemblages après Insertion"/>
+  </layoutContainer>
+  <layoutContainer id="layout3009" layoutChildren="horizontal">
+					  <imageControl id="imageSB17a" imageMso="ShapeRightArrow"/>
+                              <labelControl id="LabelButton211a" label="Module Intégré à l'Interface de calcul"/>
+  </layoutContainer>
+  <labelControl id="Module201" label=" "/>
+				    <button id="Button201" label="Insertion d'Articles Assemblés" onAction="PrimaryMacro" imageMso="SlideMasterTextPlaceholderInsert"/>
+  <layoutContainer id="layout3001a" layoutChildren="horizontal">
+					  <imageControl id="imageSB9" imageMso="BrowseSelector"/>
+                              <labelControl id="LabelButton201" label="Insertion successif d'Articles multiples"/>
+  </layoutContainer>
+  <layoutContainer id="layout3001b" layoutChildren="horizontal">
+					  <imageControl id="imageSB9e" imageMso="BrowseSelector"/>
+                              <labelControl id="LabelButton201e" label="Choix de base de données intégré, d'Allocation des Frais indirects et d'Inclusion de l'Assemblage"/>
+  </layoutContainer>
+  <layoutContainer id="layout3001g" layoutChildren="horizontal">
+					  <imageControl id="imageSB9f" imageMso="ShapeRightArrow"/>
+                              <labelControl id="LabelButton201f" label="Module Séparé de l'Interface de calcul"/>
+  </layoutContainer>
+  <labelControl id="Module202" label=" "/>
+                               <button id="Button202" label="Importation de Bordereau" onAction="PrimaryMacro" imageMso="OutlineSubtotals"/>
+				    <layoutContainer id="layout3002" layoutChildren="horizontal">
+					  <imageControl id="imageSB10" imageMso="BrowseSelector"/>                            
+					  <labelControl id="LabelButton202" label="Définition du type d'Article: Direct, Indirect, Prix Séparé Exclus, Provision pour Imprévus et Commentaire"/>
+				    </layoutContainer>
+  <layoutContainer id="layout3008d202" layoutChildren="horizontal">
+					  <imageControl id="imageSB16d202" imageMso="BrowseSelector"/>  
+					  <labelControl id="LabelButton208d202" label="Options d'importations par Excel, Presse-Papier ou Access"/>
+				      </layoutContainer>
+  <layoutContainer id="layout3001pf" layoutChildren="horizontal">
+					  <imageControl id="imageSB9pf" imageMso="ShapeRightArrow"/>
+                              <labelControl id="LabelButton201pf" label="Module Séparé de l'Interface de calcul"/>
+  </layoutContainer>
+  <labelControl id="Module210" label=" "/>
+                               <button id="Button210" label="Insertion d'entrées" onAction="PrimaryMacro" imageMso="CellsInsertDialog"/>
+                            	  <layoutContainer id="layout3013" layoutChildren="horizontal">
+					  <imageControl id="imageSB21" imageMso="BrowseSelector"/>  
+					  <labelControl id="LabelButton210" label="Entrées simple ou multiple, fonctionalité et flexibilité d'Excel en environnement sécurisé"/>
+					  </layoutContainer>
+  <layoutContainer id="layout3001h" layoutChildren="horizontal">
+					  <imageControl id="imageSB9h" imageMso="ShapeRightArrow"/>
+                              <labelControl id="LabelButton201h" label="Module Intégré à l'Interface de calcul"/>
+  </layoutContainer>
+  <labelControl id="Module209" label=" "/>
+  <button id="Button209" label="Suppression d'article" onAction="PrimaryMacro" imageMso="Delete"/>
+                            	  <layoutContainer id="layout3015" layoutChildren="horizontal">
+					  <imageControl id="imageSB23" imageMso="BrowseSelector"/>  
+					  <labelControl id="LabelButton209" label="Suppression rapide d'article(s)"/>
+					  </layoutContainer>
+  <layoutContainer id="layout3001pf9" layoutChildren="horizontal">
+					  <imageControl id="imageSB9pf9" imageMso="ShapeRightArrow"/>
+                              <labelControl id="LabelButton201pf9" label="Module Intégré à l'Interface de calcul"/>
+  </layoutContainer>
+  <labelControl id="Module206" label=" "/>
+                               <button id="Button206" label="Ordonnancement des articles" onAction="PrimaryMacro" imageMso="RecurrenceEdit"/>
+                            	  <layoutContainer id="layout3014" layoutChildren="horizontal">
+					  <imageControl id="imageSB22" imageMso="BrowseSelector"/>  
+					  <labelControl id="LabelButton206" label="Réordonnancement des articles sur insertion à l'insertion des Articles"/>
+					  </layoutContainer>
+  <layoutContainer id="layout3001i" layoutChildren="horizontal">
+					  <imageControl id="imageSB9i" imageMso="ShapeRightArrow"/>
+                              <labelControl id="LabelButton201i" label="Module Intégré à l'Interface de calcul"/>
+  </layoutContainer>
+  <labelControl id="Module215" label=" "/>
+					  <button id="Button215" label="Ouverture Excel sécurisé" onAction="PrimaryMacro" imageMso="FileDocumentEncrypt"/>
+				    <layoutContainer id="layout3003" layoutChildren="horizontal">
+					  <imageControl id="imageSB11" imageMso="BrowseSelector"/>                                                       
+ 					  <labelControl id="LabelButton215" label="Bordereaux clients et entrepreneurs, Formats .xls, .xlsx, .xlsm"/> 
+				   </layoutContainer>
+  <layoutContainer id="layout3001j" layoutChildren="horizontal">
+					  <imageControl id="imageSB9j" imageMso="ShapeRightArrow"/>
+                              <labelControl id="LabelButton201j" label="Module Séparé de l'Interface de calcul"/>
+  </layoutContainer>
+  <labelControl id="Module214" label=" "/>
+                               <button id="Button214" label="Navigation intégré" onAction="PrimaryMacro" imageMso="RightArrow2"/>
+                            	  <layoutContainer id="layout3011" layoutChildren="horizontal">
+					  <imageControl id="imageSB19" imageMso="BrowseSelector"/>  
+					  <labelControl id="LabelButton214" label="Paramètrage et reparamétrage d'articles, Déplacement, copiage et collage inter-instances XLApp"/>
+					  </layoutContainer>
+  <layoutContainer id="layout3001k" layoutChildren="horizontal">
+					  <imageControl id="imageSB9k" imageMso="ShapeRightArrow"/>
+                              <labelControl id="LabelButton201k" label="Module Intégré à l'Interface de calcul"/>
+  </layoutContainer>
+  <labelControl id="Module212" label=" "/>
+                               <button id="Button212" label="Paramètres d'entreprise et de projet" onAction="PrimaryMacro" imageMso="BlogHomePage"/>
+                            	  <layoutContainer id="layout3012" layoutChildren="horizontal">
+					  <imageControl id="imageSB20" imageMso="BrowseSelector"/>  
+					  <labelControl id="LabelButton212" label="Dates de fermeture, Notes de soumission, Professionels, Client, ..."/>
+					  </layoutContainer>
+  <layoutContainer id="layout3001l" layoutChildren="horizontal">
+					  <imageControl id="imageSB9l" imageMso="ShapeRightArrow"/>
+                              <labelControl id="LabelButton201l" label="Module Séparé de l'Interface de calcul"/>
+  </layoutContainer>
+                          </layoutContainer>
+                      </topItems>
+                  </group>
+
+                  <group id="SixthGroup" label="Modules de Calcul" helperText="Exploitez pleinement l'intégration des Outils Office, Google et Adobe dans XLApp accompagné de modules de Calcul technique.">
+                      <primaryItem>
+				  <menu id="BigButtonCALCUL" label="CALCUL" imageMso="ProjectCalculate" >
+      				  <menuGroup id="switchMenuGroupCALCUL">
+        			  <button id="Button213m" label="Fonctions de calcul adaptées" description="Cliquez pour afficher le vidéo exemple YouTube." onAction="PrimaryMacro" imageMso="FunctionWizard"/>
+				  <button id="Button204m" label="Calcul de tranchées" description="Cliquez pour afficher le vidéo exemple YouTube." onAction="PrimaryMacro" imageMso="ChartAreaChart"/>
+				  <button id="Button207m" label="Saisie intégré au plan électronique" description="Cliquez pour afficher le vidéo exemple YouTube." onAction="PrimaryMacro" imageMso="RulerShowHide"/>
+     				 	  </menuGroup>
+      				  <menuGroup id="switchMenuGroupCALCULSep">
+				  <button id="BbCALCULhelper" label="Afficher le vidéo complet" description="Cliquez pour afficher le vidéo exemple YouTube." onAction="PrimaryMacro" imageMso="ToolboxVideo"/>
+     				 	  </menuGroup>
+  				   </menu>
+                      </primaryItem>
+                      <topItems>
+                          <layoutContainer id="layout46" layoutChildren="vertical">
+  <labelControl id="Module213" label=" "/>
+                               <button id="Button213" label="Fonctions de calcul adaptées" onAction="PrimaryMacro" imageMso="FunctionWizard"/>
+                            	  <layoutContainer id="layout3010" layoutChildren="horizontal">
+					  <imageControl id="imageSB18" imageMso="BrowseSelector"/>  
+					  <labelControl id="LabelButton213" label="Provisions aux Sous-projets et Projets au %, Coût d'allocation des provisions aux Frais indirects, Cautionnement et Assurances"/>
+					  </layoutContainer>
+  <layoutContainer id="layout3001o" layoutChildren="horizontal">
+					  <imageControl id="imageSB9o" imageMso="ShapeRightArrow"/>
+                              <labelControl id="LabelButton201o" label="Module Intégré à l'Interface de calcul"/>
+  </layoutContainer>
+  <labelControl id="Module204" label=" "/>
+                               <button id="Button204" label="Calcul de tranchées" onAction="PrimaryMacro" imageMso="ChartAreaChart"/>
+                          <layoutContainer id="layout3005" layoutChildren="horizontal">
+					  <imageControl id="imageSB13" imageMso="BrowseSelector"/>  
+					  <labelControl id="LabelButton204" label="Saisie des paramètres routiers"/>
+				  </layoutContainer>
+	  <layoutContainer id="layout3005b" layoutChildren="horizontal">
+					  <imageControl id="imageSB13b" imageMso="BrowseSelector"/>  
+					  <labelControl id="LabelButton204b" label="Intégration Google Maps"/>
+	  </layoutContainer>
+	  <layoutContainer id="layout3005c" layoutChildren="horizontal">
+					  <imageControl id="imageSB13c" imageMso="BrowseSelector"/>  
+					  <labelControl id="LabelButton204c" label="Allocation proportionel aux articles des coûts en Sous-Traitance, Matériaux, Main d'oeuvre et Machinerie"/>
+  </layoutContainer>
+  <layoutContainer id="layout3001p" layoutChildren="horizontal">
+					  <imageControl id="imageSB9p" imageMso="ShapeRightArrow"/>
+                              <labelControl id="LabelButton201p" label="Module Séparé de l'Interface de calcul"/>
+  </layoutContainer>
+  <labelControl id="Module207" label=" "/>
+                               <button id="Button207" label="Saisie intégré au plan électronique" onAction="PrimaryMacro" imageMso="RulerShowHide"/>
+                            	  <layoutContainer id="layout3007" layoutChildren="horizontal">
+					  <imageControl id="imageSB15" imageMso="BrowseSelector"/>  
+					  <labelControl id="LabelButton207" label="Calcul de Surfaces, Volumes, Longueurs, Conversions, Quantités"/>
+					  </layoutContainer>
+  <layoutContainer id="layout3001q" layoutChildren="horizontal">
+					  <imageControl id="imageSB9q" imageMso="ShapeRightArrow"/>
+                              <labelControl id="LabelButton201q" label="Module Séparé de l'Interface de calcul"/>
+  </layoutContainer>
+                          </layoutContainer>
+                      </topItems>
+                  </group>
+                  <group id="FifthGroup" label="Modules de Soumission" helperText="Produisez votre scénario de fermeture sur différents rapports accompagné des outils de vérification et de fermeture.">
+                      <primaryItem>
+				  <menu id="BigButtonRAPPORTS" label="RAPPORTS" imageMso="ReportsProject" >
+      				  <menuGroup id="switchMenuGroupRAPPORTS">
+        			  <button id="Button203m" label="Fermeture de soumission" description="Cliquez pour afficher le vidéo exemple YouTube." onAction="PrimaryMacro" imageMso="PercentStyle"/>
+				  <button id="Button205m" label="Rapports de tout genre" description="Cliquez pour afficher le vidéo exemple YouTube." onAction="PrimaryMacro" imageMso="Filter"/>
+     				 	  </menuGroup>
+      				  <menuGroup id="switchMenuGroupRAPPORTSSep">
+				  <button id="BigButtonRAPPORTShelper" label="Afficher le vidéo complet" description="Cliquez pour afficher le vidéo exemple YouTube." onAction="PrimaryMacro" imageMso="ToolboxVideo"/>
+     				 	  </menuGroup>
+  				   </menu>
+                      </primaryItem>
+                      <topItems>
+                          <layoutContainer id="layout4" layoutChildren="vertical">
+  <labelControl id="Module203" label=" "/>
+					  <button id="Button203" label="Fermeture de soumission" onAction="PrimaryMacro" imageMso="PercentStyle"/>
+				    <layoutContainer id="layout3004" layoutChildren="horizontal">
+					  <imageControl id="imageSB12" imageMso="BrowseSelector"/>                              
+					  <labelControl id="LabelButton203" label="Scénario de distribution des Coûts Indirects, Arrondissements unitaire, Répartition après allocations"/>
+					  </layoutContainer>
+  <layoutContainer id="layout3001m" layoutChildren="horizontal">
+					  <imageControl id="imageSB9m" imageMso="ShapeRightArrow"/>
+                              <labelControl id="LabelButton201m" label="Module Séparé de l'Interface de calcul"/>
+  </layoutContainer>
+  <labelControl id="Module205" label=" "/>
+                               <button id="Button205" label="Rapports de tout genre" onAction="PrimaryMacro" imageMso="Filter"/>
+                            	  <layoutContainer id="layout3006" layoutChildren="horizontal">
+					  <imageControl id="imageSB14" imageMso="BrowseSelector"/>  
+					  <labelControl id="LabelButton205" label="Bordereau, Bordereau détaillé/ventilé, Main-d'Oeuvre, Matériaux, Paramétrage personnalisé des types Produits, ..."/>
+					  </layoutContainer>
+  <layoutContainer id="layout3001n" layoutChildren="horizontal">
+					  <imageControl id="imageSB9n" imageMso="ShapeRightArrow"/>
+                              <labelControl id="LabelButton201n" label="Module Séparé de l'Interface de calcul"/>
+  </layoutContainer>
+                          </layoutContainer>
+                      </topItems>
+                  </group>
+              </secondColumn>
+
+          </tab>
+        <button id="ButNewProject" getLabel="GetLabelBS" insertBeforeMso="FileSave" isDefinitive="false" onAction="NouveauProjet"/>
+        <button id="ButOpen" getLabel="GetLabelBS" insertBeforeMso="FileSave" isDefinitive="false" onAction="OuvrirProj"/>
+        <button id="ButSave" getLabel="GetLabelBS" insertBeforeMso="FileSave" getEnabled="getEnabledBS" isDefinitive="true" onAction="Create_Tables_XLApp"/>
+        <button id="ButSaveAs" getLabel="GetLabelBS" insertBeforeMso="FileSave" getEnabled="getEnabledBS" isDefinitive="false" onAction="Create_Tables_XLApp_as_New"/>
+      	<button id="MyButtonCloseProject" insertBeforeMso="FileSave" isDefinitive="false" getLabel="GetLabelBS" onAction="FermerProjet" visible="true" getEnabled="getEnabledBS"/>
+        <button id="MyButtonClose" insertBeforeMso="FileSave" isDefinitive="false" getLabel="GetLabelBS" onAction="MacroCloseWB" visible="true"/>
+        <tab id="tabBD" label="Source de données" getTitle="GetTitle" firstColumnMinWidth="100" firstColumnMaxWidth="400">
+        <firstColumn>
+         <taskFormGroup id="MytskfrmGroup1" allowedTaskSizes="medium">
+             <category id="cat1" label="Sélection active">
+              <task id="tskRess" label="Ressources" description="Équipement, Main d'Oeuvre et Autres" imageMso="ResourceDetailsDisplay">
+               <group id="myGroupRNorm" label="Importation de Ressources" helperText="Équipement, Main d'Oeuvre et Autres" style="normal" visible="true">
+                      <primaryItem>
+                          <!-- <button id="BigButtonBStabBD" label="Importation..." onAction="PrimaryMacro" imageMso="ImportDBase"/> -->
+                      </primaryItem>
+                      <topItems>
+                          <layoutContainer id="layout1VtabBD" layoutChildren="vertical">
+
+				    <labelControl id="Excel1tabBD" label=" "/>
+				  <!--   <labelControl id="Excel1tabBD2" label=" "/> -->
+	  <layoutContainer id="layout1HtabLayH00" layoutChildren="horizontal">
+		  <imageControl id="imageSB5tabBr1H00" imageMso="SearchLibraries"/>
+      
+               <radioGroup id="rGrp" label="Recherche :" onAction="OnActionRadioGroupFilters">
+                 <radioButton id="rbtn1" label="Avec filtres"/>
+                 <radioButton id="rbtn2" label="Sans filtres"/>
+               </radioGroup>
+                 
+			   <layoutContainer id="layout1HtabLayH00FltVVV" layoutChildren="vertical">
+				   <labelControl id="Excel1tabBD212" label=" " getVisible="CallbackGetVisibleRDB"/>
+						  <layoutContainer id="layout1HtabLayH00Flt" layoutChildren="horizontal">
+							  <imageControl id="imageSB5tabBr1H00Filter" imageMso="Filter" getVisible="CallbackGetVisibleRDB"/>
+							  <labelControl id="Excel1tabBD212Filter" label="Filtres :" getVisible="CallbackGetVisibleRDB"/>
+						  </layoutContainer>
+						
+						  <!--<labelControl id="Excel1tabBD212FilterSp" label=" "/> -->
+						
+						  <layoutContainer id="layout1HtabLayH1" layoutChildren="horizontal">
+						     <imageControl id="imageSB5tabBr1" imageMso="BrowseSelector" getVisible="CallbackGetVisibleRDB"/>
+
+									  <dropDown id="dropYear" label="Par année   : " sizeString="+ de 25 000 000 $" getVisible="CallbackGetVisibleRDB">
+									      <item id="itmDD1" label="Tous les années"/>
+									      <item id="itmDD2" label="2017"/>
+									      <item id="itmDD3" label="2016"/>
+									      <item id="itmDD4" label="2015"/>
+								   </dropDown>
+
+						     <imageControl id="imageSB5tabBD2" imageMso="NextArrow" getVisible="CallbackGetVisibleRDB"/>
+						  </layoutContainer>
+
+					    <!--<labelControl id="Excel1tabBD3" label=" "/> -->
+						  <layoutContainer id="layout1HtabLayH2" layoutChildren="horizontal">
+						     <imageControl id="imageSB5tabBr2" imageMso="BrowseSelector" getVisible="CallbackGetVisibleRDB"/>
+
+									  <dropDown id="dropCity" label="Par ville       : " sizeString="+ de 25 000 000 $" getVisible="CallbackGetVisibleRDB">
+									  <item id="itmDD12" label="Tous les villes"/>
+									  <item id="itmDD22" label="2017"/>
+									  <item id="itmDD32" label="2016"/>
+									  <item id="itmDD42" label="2015"/>
+								   </dropDown>
+
+						     <imageControl id="imageSB5tabBD3" imageMso="NextArrow" getVisible="CallbackGetVisibleRDB"/>
+						  </layoutContainer>
+
+					   <!-- <labelControl id="Excel1tabBDsep" label=" "/> -->
+
+						  <layoutContainer id="layout1HtabLayH3" layoutChildren="horizontal">
+						     <imageControl id="imageSB5tabBr3" imageMso="BrowseSelector" getVisible="CallbackGetVisibleRDB"/>
+
+									  <dropDown id="dropClientName" label="Par client     :  " sizeString="+ de 25 000 000 $" getVisible="CallbackGetVisibleRDB">
+									  <item id="itmDD13" label="Tous les clients"/>
+									  <item id="itmDD23" label="2017"/>
+									  <item id="itmDD33" label="2016"/>
+									  <item id="itmDD43" label="2015"/>
+								   </dropDown>
+
+						     <imageControl id="imageSB5tabBD4" imageMso="NextArrow" getVisible="CallbackGetVisibleRDB"/>
+						  </layoutContainer>
+
+					   <!-- <labelControl id="Excel1tabBDsep4" label=" "/> -->
+
+						  <layoutContainer id="layout1HtabLayH4" layoutChildren="horizontal">
+						     <imageControl id="imageSB5tabBr4" imageMso="BrowseSelector" getVisible="CallbackGetVisibleRDB"/>
+
+									  <dropDown id="dropTypeClient" label="Type client  :  " sizeString="+ de 25 000 000 $" getVisible="CallbackGetVisibleRDB">
+									      <item id="itmDD14" label="Tous les types"/>
+									      <item id="itmDD24" label="Résidentiel"/>
+									      <item id="itmDD34" label="Municipal"/>
+									      <item id="itmDD44" label="Provincial"/>
+									      <item id="itmDD54" label="Commercial"/>
+								   </dropDown>
+
+						     <imageControl id="imageSB5tabBD42" imageMso="NextArrow" getVisible="CallbackGetVisibleRDB"/>
+						  </layoutContainer>
+
+					  <!--  <labelControl id="Excel1tabBDsepF2" label=" "/> -->
+
+
+
+						  <layoutContainer id="layout1HtabLayH45" layoutChildren="horizontal">
+						     <imageControl id="imageSB5tabBr45" imageMso="BrowseSelector" getVisible="CallbackGetVisibleRDB"/>
+
+									  <dropDown id="dropCoutProjet" label="Coût projet :  " sizeString="+ de 25 000 000 $" getVisible="CallbackGetVisibleRDB">
+									      <item id="itmDD055" label="Tous les coûts"/>
+										    <item id="itmDD155" label="- de 10 000 $"/>
+										    <item id="itmDD255" label="- de 25 000 $"/>
+										    <item id="itmDD355" label="- de 50 000 $"/>
+										    <item id="itmDD455" label="- de 100 000 $"/>
+										    <item id="itmDD565" label="- de 250 000 $"/>
+								        <item id="itmDD575" label="- de 500 000 $"/>
+								        <item id="itmDD585" label="- de 1 000 000 $"/>
+								        <item id="itmDD595" label="- de 1 500 000 $"/>
+								        <item id="itmDD605" label="- de 2 000 000 $"/>
+								        <item id="itmDD615" label="- de 3 000 000 $"/>
+								        <item id="itmDD625" label="- de 5 000 000 $"/>
+								        <item id="itmDD635" label="- de 7 500 000 $"/>
+								        <item id="itmDD645" label="- de 10 000 000 $"/>
+								        <item id="itmDD655" label="- de 15 000 000 $"/>
+								        <item id="itmDD665" label="- de 25 000 000 $"/>
+								        <item id="itmDD667" label="+ de 25 000 000 $"/>
+								   </dropDown>
+
+						     <imageControl id="imageSB5tabBD425" imageMso="NextArrow" getVisible="CallbackGetVisibleRDB"/>
+						  </layoutContainer>
+
+					    <labelControl id="Excel1tabBDsepF25" label=" " getVisible="CallbackGetVisibleRDB"/>
+
+			
+					    <!--  boutons :-->
+						  <layoutContainer id="layout1HtabLayH42312" layoutChildren="horizontal">
+							    <button id="ButtonTabBDReinit" label="Réinitialiser" onAction="PrimaryMacro" imageMso="FilterClear" style="large" getVisible="CallbackGetVisibleRDB"/>
+						      <button id="ButtonTabBDApplyFilters" label="Appliquer   " onAction="PrimaryMacro" imageMso="FilterReapply" style="large" getVisible="CallbackGetVisibleRDB"/>
+						  </layoutContainer> 
+						
+					  <!-- <layoutContainer id="layout1HtabLayH4231" layoutChildren="horizontal">
+						     <button id="ButtonTabBDReinit" label="Réinitialiser" onAction="PrimaryMacro" imageMso="FilterClear" style="large"/>
+						  </layoutContainer> -->
+
+							  <labelControl id="Excel1tabBD2sepCommF22" label=" "/>	
+
+
+						  <layoutContainer id="layout1HtabLayHR" layoutChildren="horizontal">
+						     <imageControl id="imageSB5tabBrR" imageMso="ShapeRightArrow"/>
+
+									  <dropDown id="dropSelectionFinal" label="Sélection    :  " sizeString="S16-015b - Montréal, OMHM Habitations Coleraine-Saint-Gabriel au 205 à 285, rue Charon rue Charonruerue.mdb">
+									      <item id="itmDD14R" label=" "/>
+									      <item id="itmDD24R" label=" "/>
+									      <item id="itmDD34R" label=" "/>
+									      <item id="itmDD44R" label=" "/>
+									      <item id="itmDD54R" label=" "/>
+								   </dropDown>
+
+						  </layoutContainer>
+					  <!-- Sélection :-->
+
+					  <labelControl id="Excel1tabBD2sepCommF22Imp" label=" "/>	
+				  <!--	<button id="BigButtonBStabBDImp" label="Importation..." onAction="PrimaryMacro" size="large" imageMso="ImportDBase"/> -->
+						  <layoutContainer id="layout1HtabLayH42312FL" layoutChildren="horizontal">
+						     <button id="BigButtonBStabBDImpF" label="Importer" onAction="PrimaryMacro" imageMso="ImportDBase" style="large"/>
+						  </layoutContainer>
+			 
+			   </layoutContainer>
+	  </layoutContainer>
+					  
+
+
+                          </layoutContainer>
+                      </topItems>
+         		     <bottomItems>
+           			  <!--  <button id="MyCustomButtonTsk" label="My Button" imageMso="HappyFace"/> -->
+
+       		     </bottomItems>
+		  </group>
+ 
+              </task>
+              <task id="tskRess2" label="Assemblages" description="Projet comprenant Articles assemblés." imageMso="PivotPlusMinusFieldHeadersShowHide">
+               <group id="myGroupRAvert2" label="Label 2. Group" helperText="Style:= warning" style="warning" visible="true"/>
+               <group id="myGroupRErr2" label="Label 3. Group" helperText="Style:= error" style="error" visible="false"/>
+              </task>
+             </category>
+
+         </taskFormGroup>
+       </firstColumn>
+    </tab>
+        <button id="ButAbout" label="www.XLCie.net" isDefinitive="false" onAction="InternetSB"/>
+  </backstage>
+  <contextMenus>
+		  <contextMenu idMso="ContextMenuShape">
+				  <button id="RefreshShape" insertBeforeMso="Cut" getLabel="getLabel" enabled="true" imageMso="RefreshWebView" visible="true" onAction="ExitFocus"/>
+			    <button idMso="Cut" visible="false" />
+			    <button idMso="Copy" visible="false" />
+			    <gallery idMso="PasteGalleryMini" visible="false" />
+			    <button idMso="ObjectAddText" visible="false" />
+			    <button idMso="ObjectEditText" visible="false" />
+			    <toggleButton idMso="ObjectEditPoints" visible="false" />
+			    <menu idMso="ObjectsGroupMenu" visible="false" />
+			    <button idMso="ObjectsGroup" visible="false" />
+			    <button idMso="ObjectsRegroup" visible="false" />
+			    <button idMso="ObjectsUngroup" visible="false" />
+			    <splitButton idMso="ObjectBringToFrontMenu" visible="false" />
+			    <button idMso="ObjectBringToFront" visible="false" />
+			    <button idMso="ObjectBringToFront" visible="false" />
+			    <button idMso="ObjectBringForward" visible="false" />
+			    <splitButton idMso="ObjectSendToBackMenu" visible="false" />
+			    <button idMso="ObjectSendToBack" visible="false" />
+			    <button idMso="ObjectSendToBack" visible="false" />
+			    <button idMso="ObjectSendBackward" visible="false" />
+			    <button idMso="HyperlinkInsert" visible="false" />
+			    <button idMso="HyperlinkEdit" visible="false" />
+			    <button idMso="HyperlinkOpenExcel" visible="false" />
+			    <button idMso="HyperlinkRemove" visible="false" />
+			    <button idMso="MacroAssign" visible="false" />
+			    <button idMso="ObjectSetShapeDefaults" visible="false" />
+			    <button idMso="ObjectSizeAndPropertiesDialog" visible="false" />
+			    <button idMso="ObjectFormatDialog" visible="false" />
+		  </contextMenu>
+	    <contextMenu idMso="ContextMenuTextEdit">
+				  <button id="RefreshShape2" insertBeforeMso="FirstCorrectionAlternative" getLabel="getLabel" enabled="true" imageMso="RefreshWebView" visible="true" onAction="ExitFocus"/>
+		      <button idMso="FirstCorrectionAlternative" visible="false" />
+		      <button idMso="SecondCorrectionAlternative" visible="false" />
+		      <button idMso="ThirdCorrectionAlternative" visible="false" />
+		      <button idMso="FourthCorrectionAlternative" visible="false" />
+		      <button idMso="FifthCorrectionAlternative" visible="false" />
+		      <button idMso="MoreCorrectionAlternatives" visible="false" />
+		      <button idMso="Cut" visible="false" />
+		      <button idMso="Copy" visible="false" />
+		      <gallery idMso="PasteGalleryMini" visible="false" />
+		      <gallery idMso="EquationOptionsGallery" visible="false" />
+		      <button idMso="TextEditModeExit" visible="false" />
+		      <button idMso="FontDialog" visible="false" />
+		      <button idMso="ParagraphDialog" visible="false" />
+		      <gallery idMso="BulletsGallery" visible="false" />
+		      <button idMso="BulletsAndNumberingBulletsDialog" visible="false" />
+		      <button idMso="ImeReconvert" visible="false" />
+		      <button idMso="HyperlinkInsert" visible="false" />
+		      <button idMso="HyperlinkEdit" visible="false" />
+		      <button idMso="HyperlinkOpenExcel" visible="false" />
+		      <button idMso="HyperlinkRemove" visible="false" />
+		      <button idMso="MacroAssign" visible="false" />
+		      <button idMso="WordArtFormatDialog" visible="false" />
+		      <button idMso="ObjectFormatDialog" visible="false" />
+	  </contextMenu>
+	</contextMenus>
+</customUI>
