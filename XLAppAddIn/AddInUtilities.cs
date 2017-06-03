@@ -259,7 +259,7 @@ namespace XLAppAddIn {
                 string ClickOnceLocation = Path.GetDirectoryName(uriCodeBase.LocalPath.ToString());
                 //xlApp.Caption = "";
                 //                                                                   readonly=true
-                xlWorkBook = xlApp.Workbooks.Open(ClickOnceLocation + "\\XLApp.dll", 0, true, 5, "VelvetSweatshop911", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "", false, false, 0, false, 1, 0);
+                xlWorkBook = xlApp.Workbooks.Open(ClickOnceLocation + "\\XLApp.dll", 0, true, 5, "False", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "", false, false, 0, false, 1, 0);
                 xlApp.AutomationSecurity = Microsoft.Office.Core.MsoAutomationSecurity.msoAutomationSecurityLow; //26 mai 2017 https://msdn.microsoft.com/en-us/library/office/ff194819.aspx
                 xlApp.Caption = "";
                 //xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
