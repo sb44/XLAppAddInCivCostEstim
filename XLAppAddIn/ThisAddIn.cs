@@ -127,7 +127,7 @@ namespace XLAppAddIn
 
             try
             {
-                if (this.Application.Caption.IndexOf("XLCie") > -1)
+                if (this.Application.Caption.IndexOf("LGSL+") > -1)
                 {
                     var width = 0;
 
@@ -153,7 +153,7 @@ namespace XLAppAddIn
 
                     //////myCustomTaskPane.Visible = true;
                     Globals.Ribbons.ManageTaskPaneRibbon.toggleButton1.Checked = myCustomTaskPane.Visible;
-                    if (this.Application.Caption.IndexOf("XLCie") > -1) this.Application.Run("ShowOrHideUserControlCheckBoxInCSharp"); //met myUserControl1 visible
+                    if (this.Application.Caption.IndexOf("LGSL+") > -1) this.Application.Run("ShowOrHideUserControlCheckBoxInCSharp"); //met myUserControl1 visible
                                                                                                                                        //FIN USERCONTROL DE GAUCHE AVEC TABLE LAYOUT PANNEL
 
                     //TEST NEW USERCONTROL InterfaceData :
@@ -334,7 +334,7 @@ namespace XLAppAddIn
         }
         private void defineCustomCommandBarImages()
         {
-            if (this.Application.Caption.IndexOf("XLCie") == -1) return;
+            if (this.Application.Caption.IndexOf("LGSL+") == -1) return;
             // Application.CommandBars(1).FindControl(msoControlButton, Tag:= 2172)
             // Application.CommandBars("Cell").FindControl(msoControlButton, Tag:= 2172)
             // Application.CommandBars("Row").FindControl(msoControlButton, Tag:= 2172)

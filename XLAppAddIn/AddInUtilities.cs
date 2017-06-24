@@ -343,13 +343,13 @@ namespace XLAppAddIn {
         {
              try
              {
-                isMyApp = (Globals.ThisAddIn.Application.Caption.IndexOf("XLCie") > -1);
+                isMyApp = (Globals.ThisAddIn.Application.Caption.IndexOf("LGSL+") > -1);
                 return (Globals.ThisAddIn.Application.ActiveWorkbook.IsAddin);
             }
              catch
              {
                 // Si erreur, c'est parce que c'est un addin (par essai-erreur)
-                isMyApp = (Globals.ThisAddIn.Application.Caption.IndexOf("XLCie") > -1);
+                isMyApp = (Globals.ThisAddIn.Application.Caption.IndexOf("LGSL+") > -1);
                 return true; 
              }
         }
