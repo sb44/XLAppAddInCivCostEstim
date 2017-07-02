@@ -2,6 +2,9 @@
 using System;
 using System.Windows.Forms;
 using System.IO;
+using IWshRuntimeLibrary;
+using System.Deployment.Application;
+using System.Reflection;
 
 namespace XLAppAddIn
 {
@@ -47,11 +50,11 @@ namespace XLAppAddIn
                 //Globals.Ribbons.ManageTaskPaneRibbon.tab2.Visible = false; // messagebox pour avertir l'utilisateur ou fermer la visibilité...
 
                 string userProfile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-                if (!File.Exists(userProfile + "\\Desktop\\" + "XLApp" + ".lnk")) { 
+                if (!System.IO.File.Exists(userProfile + "\\Desktop\\" + "XLApp" + ".lnk")) { 
                     // code si aucun raccourci sur le bureau :
                 AddInUtilities.InitiateFirstLaunch();
-
-                if (File.Exists(userProfile + "\\Desktop\\" + "XLApp" + ".lnk"))
+                    updateDeskTopShortCutDescription("XLApp");
+                    if (System.IO.File.Exists(userProfile + "\\Desktop\\" + "XLApp" + ".lnk"))
                     System.Windows.MessageBox.Show("Pour utiliser l'application, veuillez lancer le raccourci par votre bureau ou par le menu démarrer.", "XLApp");
                 
                 Globals.Ribbons.ManageTaskPaneRibbon.tab2.Visible = false;
@@ -81,7 +84,7 @@ namespace XLAppAddIn
                 return;
             }
 
-            Globals.ThisAddIn.TaskPaneInterfaceVert.Visible = ((RibbonToggleButton)sender).Checked;
+        Globals.ThisAddIn.TaskPaneInterfaceVert.Visible = ((RibbonToggleButton)sender).Checked;
             
 
 
@@ -93,6 +96,22 @@ namespace XLAppAddIn
                 //     Globals.Application.Run("SheetList_RDB");
 
         }
+
+        private static void updateDeskTopShortCutDescription(string shortcutName) {
+            WshShell wsh = new WshShell();
+            IWshRuntimeLibrary.IWshShortcut shortcut = wsh.CreateShortcut(
+                Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\" + shortcutName + ".lnk") as IWshRuntimeLibrary.IWshShortcut;
+            //shortcut.Arguments = "";
+            //shortcut.TargetPath = "c:\\app\\myftp.exe";
+
+            string curVersion = ApplicationDeployment.IsNetworkDeployed ? ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString() // retourne la bonne version en exécution
+                                : Assembly.GetExecutingAssembly().GetName().Version.ToString(); //le 2e retourne : 1.0.0.0
+            shortcut.Description = "XLApp, Version " + DateTime.Now.Year % 100 + "." + curVersion;
+            //shortcut.WorkingDirectory = "c:\\app";
+            //shortcut.IconLocation = "specify icon location";
+            shortcut.Save();
+        }
+
         //ToggleCopyPaste
         public static void ToggleCopyPasteRibbon(string enabled)
         {
