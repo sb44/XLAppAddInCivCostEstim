@@ -53,13 +53,16 @@ namespace XLAppAddIn {
                     info = ad.CheckForDetailedUpdate();
 
                 } catch (DeploymentDownloadException dde) {
-                    MessageBox.Show("The new version of the application cannot be downloaded at this time. \n\nPlease check your network connection, or try again later. Error: " + dde.Message);
+                    //MessageBox.Show("The new version of the application cannot be downloaded at this time. \n\nPlease check your network connection, or try again later. Error: " + dde.Message);
+                    MessageBox.Show("La nouvelle version de l'application ne peut être télécharger en ce moment. \n\nVeuillez vérifier votre connection, ou réessayer plus tard. Erreur: " + dde.Message);
                     return;
                 } catch (InvalidDeploymentException ide) {
-                    MessageBox.Show("Cannot check for a new version of the application. The ClickOnce deployment is corrupt. Please redeploy the application and try again. Error: " + ide.Message);
+                    //MessageBox.Show("Cannot check for a new version of the application. The ClickOnce deployment is corrupt. Please redeploy the application and try again. Error: " + ide.Message);
+                    MessageBox.Show("Impossible de vérifier pour une nouvelle version de l'application. Le déploiement ClickOnce de l'application est corrompue. Veuillez redéployez l'application et réessayer. Erreur: " + ide.Message);
                     return;
                 } catch (InvalidOperationException ioe) {
-                    MessageBox.Show("This application cannot be updated. It is likely not a ClickOnce application. Error: " + ioe.Message);
+                    //MessageBox.Show("This application cannot be updated. It is likely not a ClickOnce application. Error: " + ioe.Message);
+                    MessageBox.Show("Cet application ne peut être mise à jour. Ce n'est vraisemblablement pas une application ClickOnce. Erreur: " + ioe.Message);
                     return;
                 }
 
@@ -67,7 +70,8 @@ namespace XLAppAddIn {
                     Boolean doUpdate = true;
 
                     if (!info.IsUpdateRequired) {
-                        DialogResult dr = MessageBox.Show("An update is available. Would you like to update the application now?", "Update Available", MessageBoxButtons.OKCancel);
+                        //DialogResult dr = MessageBox.Show("An update is available. Would you like to update the application now?", "Update Available", MessageBoxButtons.OKCancel);
+                        DialogResult dr = MessageBox.Show("Une mise à jour de l'application est disponible. Souhaitez-vous l'exécuter maintenant.", "XLApp - Mise à jour disponible", MessageBoxButtons.OKCancel);
                         if (!(DialogResult.OK == dr)) {
                             doUpdate = false;
                         }
@@ -83,10 +87,12 @@ namespace XLAppAddIn {
                     if (doUpdate) {
                         try {
                             ad.Update();
-                            MessageBox.Show("The application has been upgraded, and will now restart.");
-                            Application.Restart();
+                            //MessageBox.Show("The application has been upgraded, and will now restart.");
+                            MessageBox.Show("La mise à jour de l'application a été réussi et sera effective au prochain redémarrage.");
+                            //Application.Restart(); MODIF SB ENLÈVEMENT !
                         } catch (DeploymentDownloadException dde) {
-                            MessageBox.Show("Cannot install the latest version of the application. \n\nPlease check your network connection, or try again later. Error: " + dde);
+                            //MessageBox.Show("Cannot install the latest version of the application. \n\nPlease check your network connection, or try again later. Error: " + dde);
+                            MessageBox.Show("Échec d'installation de la plus récente mise à jour. \n\nVeuillez vérifier votre connection, ou réessayer plus tard. Erreur: " + dde);
                             return;
                         }
                     }
