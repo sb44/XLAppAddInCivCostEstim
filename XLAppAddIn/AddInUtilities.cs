@@ -31,7 +31,7 @@ namespace XLAppAddIn {
 
         string GetClickOnceLocation();
         string CurrentVersion();
-        void InstallUpdateSyncWithInfo();
+        bool InstallUpdateSyncWithInfo();
         //bool GetIsAddIn(); est une static bool ici, bas, donc pourrait aller dans
         // une autre classe à part car ne peut être callé dans Excel
     }
@@ -42,7 +42,7 @@ namespace XLAppAddIn {
     public class AddInUtilities : IAddInUtilities
     {
 
-        public void InstallUpdateSyncWithInfo() {
+        public bool InstallUpdateSyncWithInfo() {
             // https://msdn.microsoft.com/en-us/library/ms404263.aspx
             UpdateCheckInfo info = null;
 
@@ -55,15 +55,15 @@ namespace XLAppAddIn {
                 } catch (DeploymentDownloadException dde) {
                     //MessageBox.Show("The new version of the application cannot be downloaded at this time. \n\nPlease check your network connection, or try again later. Error: " + dde.Message);
                     MessageBox.Show("La nouvelle version de l'application ne peut être télécharger en ce moment. \n\nVeuillez vérifier votre connection, ou réessayer plus tard. Erreur: " + dde.Message);
-                    return;
+                    return false;
                 } catch (InvalidDeploymentException ide) {
                     //MessageBox.Show("Cannot check for a new version of the application. The ClickOnce deployment is corrupt. Please redeploy the application and try again. Error: " + ide.Message);
                     MessageBox.Show("Impossible de vérifier pour une nouvelle version de l'application. Le déploiement ClickOnce de l'application est corrompue. Veuillez redéployez l'application et réessayer. Erreur: " + ide.Message);
-                    return;
+                    return false;
                 } catch (InvalidOperationException ioe) {
                     //MessageBox.Show("This application cannot be updated. It is likely not a ClickOnce application. Error: " + ioe.Message);
                     MessageBox.Show("Cet application ne peut être mise à jour. Ce n'est vraisemblablement pas une application ClickOnce. Erreur: " + ioe.Message);
-                    return;
+                    return false;
                 }
 
                 if (info.UpdateAvailable) {
@@ -71,7 +71,7 @@ namespace XLAppAddIn {
 
                     if (!info.IsUpdateRequired) {
                         //DialogResult dr = MessageBox.Show("An update is available. Would you like to update the application now?", "Update Available", MessageBoxButtons.OKCancel);
-                        DialogResult dr = MessageBox.Show("Une mise à jour de l'application est disponible. Souhaitez-vous l'exécuter maintenant.", "XLApp - Mise à jour disponible", MessageBoxButtons.OKCancel);
+                        DialogResult dr = MessageBox.Show("Une mise à jour de l'application est disponible. Souhaitez-vous l'exécuter maintenant?", "XLApp - Mise à jour disponible", MessageBoxButtons.OKCancel);
                         if (!(DialogResult.OK == dr)) {
                             doUpdate = false;
                         }
@@ -89,15 +89,17 @@ namespace XLAppAddIn {
                             ad.Update();
                             //MessageBox.Show("The application has been upgraded, and will now restart.");
                             MessageBox.Show("La mise à jour de l'application a été réussi et sera effective au prochain redémarrage.");
+                            return true;
                             //Application.Restart(); MODIF SB ENLÈVEMENT !
                         } catch (DeploymentDownloadException dde) {
                             //MessageBox.Show("Cannot install the latest version of the application. \n\nPlease check your network connection, or try again later. Error: " + dde);
                             MessageBox.Show("Échec d'installation de la plus récente mise à jour. \n\nVeuillez vérifier votre connection, ou réessayer plus tard. Erreur: " + dde);
-                            return;
+                            return false;
                         }
                     }
                 }
             }
+            return false;
         }
 
 
