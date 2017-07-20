@@ -61,8 +61,9 @@
             this.buttonOuvrirP = this.Factory.CreateRibbonButton();
             this.buttonEnregP = this.Factory.CreateRibbonButton();
             this.buttonFermerProjet = this.Factory.CreateRibbonButton();
-            this.labelBogus = this.Factory.CreateRibbonLabel();
+            this.buttonParamProjet = this.Factory.CreateRibbonButton();
             this.buttonEnregSous = this.Factory.CreateRibbonButton();
+            this.labelBogus = this.Factory.CreateRibbonLabel();
             this.groupDeplacement = this.Factory.CreateRibbonGroup();
             this.buttonPaste = this.Factory.CreateRibbonButton();
             this.buttonCopy = this.Factory.CreateRibbonButton();
@@ -142,7 +143,6 @@
             this.buttonMEP = this.Factory.CreateRibbonButton();
             this.separator8 = this.Factory.CreateRibbonSeparator();
             this.buttonAffMsqUnit = this.Factory.CreateRibbonButton();
-            this.buttonParamProjet = this.Factory.CreateRibbonButton();
             this.tab2.SuspendLayout();
             this.group1.SuspendLayout();
             this.groupGestProjet.SuspendLayout();
@@ -237,10 +237,13 @@
             this.buttonFermerProjet.ShowImage = true;
             this.buttonFermerProjet.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonFermerProjet_Click);
             // 
-            // labelBogus
+            // buttonParamProjet
             // 
-            this.labelBogus.Label = " ";
-            this.labelBogus.Name = "labelBogus";
+            this.buttonParamProjet.Label = "Paramètres";
+            this.buttonParamProjet.Name = "buttonParamProjet";
+            this.buttonParamProjet.OfficeImageId = "TablesResetToDefault";
+            this.buttonParamProjet.ShowImage = true;
+            this.buttonParamProjet.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonParamProjet_Click);
             // 
             // buttonEnregSous
             // 
@@ -249,6 +252,11 @@
             this.buttonEnregSous.OfficeImageId = "FileSaveAs";
             this.buttonEnregSous.ShowImage = true;
             this.buttonEnregSous.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonEnregSous_Click);
+            // 
+            // labelBogus
+            // 
+            this.labelBogus.Label = " ";
+            this.labelBogus.Name = "labelBogus";
             // 
             // groupDeplacement
             // 
@@ -970,14 +978,6 @@
             this.buttonAffMsqUnit.OfficeImageId = "FrameCreateLeft";
             this.buttonAffMsqUnit.ShowImage = true;
             this.buttonAffMsqUnit.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonAffMsqUnit_Click);
-            // 
-            // buttonParamProjet
-            // 
-            this.buttonParamProjet.Label = "Paramètres Projet";
-            this.buttonParamProjet.Name = "buttonParamProjet";
-            this.buttonParamProjet.OfficeImageId = "TablesResetToDefault";
-            this.buttonParamProjet.ShowImage = true;
-            this.buttonParamProjet.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonParamProjet_Click);
             // 
             // ManageTaskPaneRibbon
             // 

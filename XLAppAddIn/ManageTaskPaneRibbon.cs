@@ -50,9 +50,19 @@ namespace XLAppAddIn
                 //Globals.Ribbons.ManageTaskPaneRibbon.tab2.Visible = false; // messagebox pour avertir l'utilisateur ou fermer la visibilité...
 
                 string userProfile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-                if (!System.IO.File.Exists(userProfile + "\\Desktop\\" + "XLApp" + ".lnk")) { 
+                if (!System.IO.File.Exists(userProfile + "\\Desktop\\" + "XLApp" + ".lnk")) {
                     // code si aucun raccourci sur le bureau :
-                AddInUtilities.InitiateFirstLaunch();
+
+                    //vérifier si l'accès à la sécurité est activé avant de poursuivre, sinon, informez l'utilisateur comment le faire.
+                    try {
+                        var VDP = Globals.ThisAddIn.Application.ActiveWorkbook.VBProject;
+                    } catch {
+                        System.Windows.MessageBox.Show("Pour poursuivre l'installation, veuillez configurer une option de sécurité en suivant cette procédure :\n\nFichier > Options > Paramètres du Centre de gestion de la confidentialité > Paramètres des macros > Cocher \"Accès approuv au modèle d'objet du projet VBA\"", "XLApp");
+                        toggleButton1.Checked = false;
+                        return;
+                    }
+
+                    AddInUtilities.InitiateFirstLaunch();
                     updateDeskTopShortCutDescription("XLApp");
                     if (System.IO.File.Exists(userProfile + "\\Desktop\\" + "XLApp" + ".lnk"))
                     System.Windows.MessageBox.Show("Pour utiliser l'application, veuillez lancer le raccourci par votre bureau ou par le menu démarrer.", "XLApp");

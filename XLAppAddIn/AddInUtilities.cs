@@ -8,6 +8,10 @@ using System.IO;
 using Microsoft.Office.Tools;
 using System.Reflection;
 using System.Deployment.Application;
+using System.Security;
+using System.Security.Policy;
+using System.Security.Permissions;
+using System.Diagnostics;
 
 namespace XLAppAddIn {
     [ComVisible(true)]
@@ -41,13 +45,28 @@ namespace XLAppAddIn {
 
     public class AddInUtilities : IAddInUtilities
     {
-
+   //     https://blogs.msdn.microsoft.com/krimakey/2008/04/18/click-once-forced-updates-in-vsto-ii-a-fuller-solution/
         public bool InstallUpdateSyncWithInfo() {
             // https://msdn.microsoft.com/en-us/library/ms404263.aspx
             UpdateCheckInfo info = null;
 
             if (ApplicationDeployment.IsNetworkDeployed) {
+
+                Assembly addinAssembly = Assembly.GetExecutingAssembly();
+                var CachePath = addinAssembly.CodeBase.Substring(0, addinAssembly.CodeBase.Length -
+                    System.IO.Path.GetFileName(addinAssembly.CodeBase).Length);
+                var CurrentDep = ApplicationDeployment.CurrentDeployment;
                 ApplicationDeployment ad = ApplicationDeployment.CurrentDeployment;
+// https://blogs.msdn.microsoft.com/krimakey/2008/04/10/click-once-forced-updates-in-vsto-some-things-we-dont-recommend-using-that-you-might-consider-anyway/
+                var appId = new ApplicationIdentity(ad.UpdatedApplicationFullName);
+                var unrestrictedPerms = new PermissionSet(PermissionState.Unrestricted);
+                var appTrust = new ApplicationTrust(appId) {
+                    DefaultGrantSet = new PolicyStatement(unrestrictedPerms),
+                    IsApplicationTrustedToRun = true,
+                    Persist = true
+                };
+
+                ApplicationSecurityManager.UserApplicationTrusts.Add(appTrust);
 
                 try {
                     info = ad.CheckForDetailedUpdate();
@@ -86,9 +105,33 @@ namespace XLAppAddIn {
 
                     if (doUpdate) {
                         try {
-                            ad.Update();
+                            // ad.Update(); // Enlèvement SB
+                            Uri DocPath = new Uri(Globals.ThisAddIn.Application.Path + "\\" + Globals.ThisAddIn.Application.Name); //test sb
+                            Uri InstallerPath = new Uri("C:\\Program Files\\Common Files\\microsoft shared\\VSTO\\10.0\\VSTOINSTALLER.exe"); //test sb
+                           // Uri RestarterPath = new Uri(CachePath + "WordRestarter.exe"); //enlève sb
+                            Uri Updatelocation = new Uri(CurrentDep.UpdateLocation.ToString());
+
+                            //Call VSTOInstaller Explicitely in "Silent Mode"
+                            Process VstoInstallerProc = new System.Diagnostics.Process();
+                            VstoInstallerProc.StartInfo.Arguments = " /S /I " + Updatelocation.AbsoluteUri;
+                            VstoInstallerProc.StartInfo.FileName = InstallerPath.AbsoluteUri;
+                            VstoInstallerProc.Start();
+
+                            VstoInstallerProc.WaitForExit();
+                            if (VstoInstallerProc.ExitCode == 0)
+                                MessageBox.Show("La mise à jour de l'application a été réussi et sera effective au prochain redémarrage de l'application. Veuillez redémarrer l'application maintenant.");
+                            else
+                                MessageBox.Show("Échec de mise à jour: Exit Code (" + VstoInstallerProc.ExitCode.ToString() + ")");
+
+                            //Call VSTOInstaller Explicitely in "Silent Mode"
+                            // Process RestarterProc = new System.Diagnostics.Process();
+                            // RestarterProc.StartInfo.Arguments = DocPath.AbsoluteUri;
+                            // RestarterProc.StartInfo.FileName = RestarterPath.AbsoluteUri;
+                            //  RestarterProc.Start();
+
+
                             //MessageBox.Show("The application has been upgraded, and will now restart.");
-                            MessageBox.Show("La mise à jour de l'application a été réussi et sera effective au prochain redémarrage.");
+                            //MessageBox.Show("La mise à jour de l'application a été réussi et sera effective au prochain redémarrage.");
                             return true;
                             //Application.Restart(); MODIF SB ENLÈVEMENT !
                         } catch (DeploymentDownloadException dde) {
