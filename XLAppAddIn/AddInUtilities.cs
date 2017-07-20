@@ -261,12 +261,12 @@ namespace XLAppAddIn {
         [return: System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.Bool)]
         public static extern bool MoveWindow([System.Runtime.InteropServices.InAttribute()] System.IntPtr hWnd, int X, int Y, int nWidth, int nHeight, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.Bool)] bool bRepaint);
 
-        internal static void InitiateFirstLaunch()
+        internal static bool InitiateFirstLaunch()
         {
 
             // Validation1 : vérifier si les raccourcis sont sur le bureau :
             string userProfile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            if (File.Exists(userProfile + "\\Desktop\\" + "XLApp" + ".lnk")) return;
+            if (File.Exists(userProfile + "\\Desktop\\" + "XLApp" + ".lnk")) return false;
 
             DialogResult result1 = MessageBox.Show("Démarrer le lancement d'initialisation de l'application?",
                                                     "XLApp",
@@ -285,8 +285,7 @@ namespace XLAppAddIn {
                 // Cela peut se faire en ajoutant les composantes VB au document excel actif et en runnant la macro qui quittera la scéance
                 // active d'Excel, ou en codant directement ds c#, mais la scéance doit être fermer.
 
-
-
+                //en attendant, la demande a été fait manuellement à l'utilisateur dans la méthod qui appelle le  InitiateFirstLaunch()
 
 
 
@@ -320,7 +319,10 @@ namespace XLAppAddIn {
                 // xlApp = null;
 
                 Globals.ThisAddIn.Application.Cursor = Microsoft.Office.Interop.Excel.XlMousePointer.xlDefault;
+                return true;
             }
+            //si l'utilisateur ne veut pas démarrer l'app initialisation:
+            return false;
         }
 
         internal static void ShowParamProjet() {

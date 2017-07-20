@@ -62,11 +62,11 @@ namespace XLAppAddIn
                         return;
                     }
 
-                    AddInUtilities.InitiateFirstLaunch();
-                    updateDeskTopShortCutDescription("XLApp");
-                    if (System.IO.File.Exists(userProfile + "\\Desktop\\" + "XLApp" + ".lnk"))
-                    System.Windows.MessageBox.Show("Pour utiliser l'application, veuillez lancer le raccourci par votre bureau ou par le menu démarrer.", "XLApp");
-                
+                    if (AddInUtilities.InitiateFirstLaunch()) {
+                        updateDeskTopShortCutDescription("XLApp");
+                        System.Windows.MessageBox.Show("Pour utiliser l'application, veuillez lancer le raccourci par votre bureau ou par le menu démarrer.", "XLApp");
+                    }
+
                 Globals.Ribbons.ManageTaskPaneRibbon.tab2.Visible = false;
                 AddInUtilities.UnConnectAddin();
                 }
