@@ -35,7 +35,7 @@ namespace XLAppAddIn {
 
         string GetClickOnceLocation();
         string CurrentVersion();
-        bool InstallUpdateSyncWithInfo();
+        string InstallUpdateSyncWithInfo();
         //bool GetIsAddIn(); est une static bool ici, bas, donc pourrait aller dans
         // une autre classe à part car ne peut être callé dans Excel
     }
@@ -46,11 +46,14 @@ namespace XLAppAddIn {
     public class AddInUtilities : IAddInUtilities
     {
    //     https://blogs.msdn.microsoft.com/krimakey/2008/04/18/click-once-forced-updates-in-vsto-ii-a-fuller-solution/
-        public bool InstallUpdateSyncWithInfo() {
+        public string InstallUpdateSyncWithInfo() {
             // https://msdn.microsoft.com/en-us/library/ms404263.aspx
             UpdateCheckInfo info = null;
 
-            if (ApplicationDeployment.IsNetworkDeployed) {
+            if (!ApplicationDeployment.IsNetworkDeployed)
+                return "La version actuelle n'est pas déployé en réseau ou est une version de développement.";
+
+                if (ApplicationDeployment.IsNetworkDeployed) {
 
                 Assembly addinAssembly = Assembly.GetExecutingAssembly();
                 var CachePath = addinAssembly.CodeBase.Substring(0, addinAssembly.CodeBase.Length -
@@ -73,26 +76,32 @@ namespace XLAppAddIn {
 
                 } catch (DeploymentDownloadException dde) {
                     //MessageBox.Show("The new version of the application cannot be downloaded at this time. \n\nPlease check your network connection, or try again later. Error: " + dde.Message);
-                    MessageBox.Show("La nouvelle version de l'application ne peut être télécharger en ce moment. \n\nVeuillez vérifier votre connection, ou réessayer plus tard. Erreur: " + dde.Message);
-                    return false;
+                    //MessageBox.Show("La nouvelle version de l'application ne peut être télécharger en ce moment. \n\nVeuillez vérifier votre connection, ou réessayer plus tard. Erreur: " + dde.Message);
+                    return "La nouvelle version de l'application ne peut être télécharger en ce moment. \n\nVeuillez vérifier votre connection, ou réessayer plus tard. Erreur: " + dde.Message;
                 } catch (InvalidDeploymentException ide) {
                     //MessageBox.Show("Cannot check for a new version of the application. The ClickOnce deployment is corrupt. Please redeploy the application and try again. Error: " + ide.Message);
-                    MessageBox.Show("Impossible de vérifier pour une nouvelle version de l'application. Le déploiement ClickOnce de l'application est corrompue. Veuillez redéployez l'application et réessayer. Erreur: " + ide.Message);
-                    return false;
+                    //MessageBox.Show("Impossible de vérifier pour une nouvelle version de l'application. Le déploiement ClickOnce de l'application est corrompue. Veuillez redéployez l'application et réessayer. Erreur: " + ide.Message);
+                    return "Impossible de vérifier pour une nouvelle version de l'application. Le déploiement ClickOnce de l'application est corrompue. Veuillez redéployez l'application et réessayer. Erreur: " + ide.Message;
                 } catch (InvalidOperationException ioe) {
                     //MessageBox.Show("This application cannot be updated. It is likely not a ClickOnce application. Error: " + ioe.Message);
-                    MessageBox.Show("Cet application ne peut être mise à jour. Ce n'est vraisemblablement pas une application ClickOnce. Erreur: " + ioe.Message);
-                    return false;
+                    //MessageBox.Show("Cet application ne peut être mise à jour. Ce n'est vraisemblablement pas une application ClickOnce. Erreur: " + ioe.Message);
+                    return "Cet application ne peut être mise à jour. Ce n'est vraisemblablement pas une application ClickOnce. Erreur: " + ioe.Message;
                 }
 
-                if (info.UpdateAvailable) {
+                if (!info.UpdateAvailable)
+                    return "La version actuelle (" + (DateTime.Now.Year % 100).ToString() + "." + ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString() + ") est à jour.";
+
+               if (info.UpdateAvailable) {
                     Boolean doUpdate = true;
+
+                  //  string test = CurrentDep.UpdatedVersion.ToString();
 
                     if (!info.IsUpdateRequired) {
                         //DialogResult dr = MessageBox.Show("An update is available. Would you like to update the application now?", "Update Available", MessageBoxButtons.OKCancel);
                         DialogResult dr = MessageBox.Show("Une mise à jour de l'application est disponible. Souhaitez-vous l'exécuter maintenant?", "XLApp - Mise à jour disponible", MessageBoxButtons.OKCancel);
                         if (!(DialogResult.OK == dr)) {
                             doUpdate = false;
+                            return "Mise à jour annulée."; //
                         }
                     } else {
                         // Display a message that the app MUST reboot. Display the minimum required version.
@@ -118,10 +127,15 @@ namespace XLAppAddIn {
                             VstoInstallerProc.Start();
 
                             VstoInstallerProc.WaitForExit();
-                            if (VstoInstallerProc.ExitCode == 0)
-                                MessageBox.Show("La mise à jour de l'application a été réussi et sera effective au prochain redémarrage de l'application. Veuillez redémarrer l'application maintenant.");
-                            else
-                                MessageBox.Show("Échec de mise à jour: Exit Code (" + VstoInstallerProc.ExitCode.ToString() + ")");
+                            if (VstoInstallerProc.ExitCode == 0) {
+                                string updatedVersDL = (DateTime.Now.Year % 100).ToString() + "." + CurrentDep.UpdatedVersion.ToString();
+                                MessageBox.Show("La mise à jour de l'application à la version " + updatedVersDL + " a été réussi et sera effective au prochain redémarrage de l'application. Veuillez redémarrer l'application maintenant.", "Mise à jour - Version " + updatedVersDL);
+                                return updatedVersDL;
+                            } else {
+                              //  MessageBox.Show("Échec de mise à jour: Exit Code (" + VstoInstallerProc.ExitCode.ToString() + ")");
+                                return "Échec de mise à jour: Exit Code (" + VstoInstallerProc.ExitCode.ToString() + ")";
+                            }
+                               
 
                             //Call VSTOInstaller Explicitely in "Silent Mode"
                             // Process RestarterProc = new System.Diagnostics.Process();
@@ -132,17 +146,17 @@ namespace XLAppAddIn {
 
                             //MessageBox.Show("The application has been upgraded, and will now restart.");
                             //MessageBox.Show("La mise à jour de l'application a été réussi et sera effective au prochain redémarrage.");
-                            return true;
+                            
                             //Application.Restart(); MODIF SB ENLÈVEMENT !
                         } catch (DeploymentDownloadException dde) {
                             //MessageBox.Show("Cannot install the latest version of the application. \n\nPlease check your network connection, or try again later. Error: " + dde);
-                            MessageBox.Show("Échec d'installation de la plus récente mise à jour. \n\nVeuillez vérifier votre connection, ou réessayer plus tard. Erreur: " + dde);
-                            return false;
+                           // MessageBox.Show("Échec d'installation de la plus récente mise à jour. \n\nVeuillez vérifier votre connection, ou réessayer plus tard. Erreur: " + dde);
+                            return "Échec d'installation de la plus récente mise à jour. \n\nVeuillez vérifier votre connection, ou réessayer plus tard. Erreur: " + dde;
                         }
                     }
                 }
             }
-            return false;
+            return "";
         }
 
 
@@ -157,7 +171,17 @@ namespace XLAppAddIn {
                        : Assembly.GetExecutingAssembly().GetName().Version.ToString(); //le 2e retourne : 1.0.0.0
             // si la version ici ne match pas celui indiqué dans le raccourci du desktop (et startmenu), on  copiera les dossiers -Projets, -Projets BackUp, ainsi que le fichier -Importation Bordereau du dossier Resources et le fichier -logo.png du dossier Images 
         }
+        //public string UpdatedVersion() {
+        //    // How to get current the product version in C#?
+        //    // Just give the reference to System.Deployment.Application and though it wont work in developement of the visual studio but it will work once the application is deployed.
 
+        //    ////using System.Deployment.Application;
+        //    ////using System.Reflection; 
+        //    return ApplicationDeployment.IsNetworkDeployed
+        //               ? ApplicationDeployment.CurrentDeployment.UpdatedVersion.ToString() // no. version après téléchargement.
+        //               : Assembly.GetExecutingAssembly().GetName().Version.ToString(); //le 2e retourne : 1.0.0.0
+        //    // si la version ici ne match pas celui indiqué dans le raccourci du desktop (et startmenu), on  copiera les dossiers -Projets, -Projets BackUp, ainsi que le fichier -Importation Bordereau du dossier Resources et le fichier -logo.png du dossier Images 
+        //}
         public string GetClickOnceLocation() {
             //Get the assembly information
             System.Reflection.Assembly assemblyInfo = System.Reflection.Assembly.GetExecutingAssembly();
