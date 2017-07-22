@@ -56,14 +56,20 @@ namespace XLAppAddIn {
                 if (ApplicationDeployment.IsNetworkDeployed) {
 
                 Assembly addinAssembly = Assembly.GetExecutingAssembly();
-                var CachePath = addinAssembly.CodeBase.Substring(0, addinAssembly.CodeBase.Length -
+
+                string CachePath = addinAssembly.CodeBase.Substring(0, addinAssembly.CodeBase.Length -
                     System.IO.Path.GetFileName(addinAssembly.CodeBase).Length);
-                var CurrentDep = ApplicationDeployment.CurrentDeployment;
+
+                ApplicationDeployment CurrentDep = ApplicationDeployment.CurrentDeployment;
+
                 ApplicationDeployment ad = ApplicationDeployment.CurrentDeployment;
-// https://blogs.msdn.microsoft.com/krimakey/2008/04/10/click-once-forced-updates-in-vsto-some-things-we-dont-recommend-using-that-you-might-consider-anyway/
-                var appId = new ApplicationIdentity(ad.UpdatedApplicationFullName);
-                var unrestrictedPerms = new PermissionSet(PermissionState.Unrestricted);
-                var appTrust = new ApplicationTrust(appId) {
+
+                // https://blogs.msdn.microsoft.com/krimakey/2008/04/10/click-once-forced-updates-in-vsto-some-things-we-dont-recommend-using-that-you-might-consider-anyway/
+                ApplicationIdentity appId = new ApplicationIdentity(ad.UpdatedApplicationFullName);
+
+                PermissionSet unrestrictedPerms = new PermissionSet(PermissionState.Unrestricted);
+
+                ApplicationTrust appTrust = new ApplicationTrust(appId) {
                     DefaultGrantSet = new PolicyStatement(unrestrictedPerms),
                     IsApplicationTrustedToRun = true,
                     Persist = true
@@ -72,7 +78,7 @@ namespace XLAppAddIn {
                 ApplicationSecurityManager.UserApplicationTrusts.Add(appTrust);
 
                 try {
-                    //info = ad.CheckForDetailedUpdate();
+                    info = ad.CheckForDetailedUpdate();
 
                 } catch (DeploymentDownloadException dde) {
                     //MessageBox.Show("The new version of the application cannot be downloaded at this time. \n\nPlease check your network connection, or try again later. Error: " + dde.Message);
