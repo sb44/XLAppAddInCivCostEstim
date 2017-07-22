@@ -72,7 +72,7 @@ namespace XLAppAddIn {
                 ApplicationSecurityManager.UserApplicationTrusts.Add(appTrust);
 
                 try {
-                    info = ad.CheckForDetailedUpdate();
+                    //info = ad.CheckForDetailedUpdate();
 
                 } catch (DeploymentDownloadException dde) {
                     //MessageBox.Show("The new version of the application cannot be downloaded at this time. \n\nPlease check your network connection, or try again later. Error: " + dde.Message);
