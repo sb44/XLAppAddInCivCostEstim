@@ -56,10 +56,12 @@ namespace XLAppAddIn
 
                     // vérifier si c'est au moins excel 2013 et 64 bit (version 15)
                     int noVers = int.Parse(Globals.ThisAddIn.Application.Version.ToString().Split('.')[0]);
+                    //bool Is64bit = Environment.GetEnvironmentVariable("ProgramW6432").Length > 0
 
                     if (noVers < 15) {
                         msgErr = "Pour finaliser l'installation, la version d'Excel 2013 ou plus récente est requise, option 64 bit.";
                     }
+
 
                     //vérifier si l'accès à la sécurité est activé avant de poursuivre, sinon, informez l'utilisateur comment le faire.
                     try {
