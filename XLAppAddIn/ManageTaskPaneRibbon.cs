@@ -56,19 +56,24 @@ namespace XLAppAddIn
                     //vérifier si l'accès à la sécurité est activé avant de poursuivre, sinon, informez l'utilisateur comment le faire.
                     try {
                         var VDP = Globals.ThisAddIn.Application.ActiveWorkbook.VBProject;
+                        if (VDP != null) VDP = null;
                     } catch {
                         System.Windows.MessageBox.Show("Pour poursuivre l'installation, veuillez configurer une option de sécurité en suivant cette procédure :\n\nFichier > Options > Paramètres du Centre de gestion de la confidentialité > Paramètres des macros > Cocher \"Accès approuv au modèle d'objet du projet VBA\"", "XLApp");
                         toggleButton1.Checked = false;
-                        return;
+                            return;
                     }
 
-                    if (AddInUtilities.InitiateFirstLaunch()) {
-                        updateDeskTopShortCutDescription("XLApp");
-                        System.Windows.MessageBox.Show("Pour utiliser l'application, veuillez lancer le raccourci par votre bureau ou par le menu démarrer.", "XLApp");
-                    }
 
-                Globals.Ribbons.ManageTaskPaneRibbon.tab2.Visible = false;
-                AddInUtilities.UnConnectAddin();
+                    AddInUtilities.InitiateFirstLaunch();
+
+
+                    //    if (AddInUtilities.InitiateFirstLaunch()) {
+                    //        updateDeskTopShortCutDescription("XLApp");
+                    //        System.Windows.MessageBox.Show("Pour utiliser l'application, veuillez lancer le raccourci par votre bureau ou par le menu démarrer.", "XLApp");
+                    //    }
+
+                    //Globals.Ribbons.ManageTaskPaneRibbon.tab2.Visible = false;
+                    //AddInUtilities.UnConnectAddin();
                 }
                 else {
                     DialogResult result1 = MessageBox.Show("Lancer l'application?",

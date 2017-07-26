@@ -12,6 +12,7 @@ using System.Security;
 using System.Security.Policy;
 using System.Security.Permissions;
 using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace XLAppAddIn {
     [ComVisible(true)]
@@ -291,12 +292,12 @@ namespace XLAppAddIn {
         [return: System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.Bool)]
         public static extern bool MoveWindow([System.Runtime.InteropServices.InAttribute()] System.IntPtr hWnd, int X, int Y, int nWidth, int nHeight, [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.Bool)] bool bRepaint);
 
-        internal static bool InitiateFirstLaunch()
+        internal static void InitiateFirstLaunch()
         {
 
             // Validation1 : vérifier si les raccourcis sont sur le bureau :
             string userProfile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            if (File.Exists(userProfile + "\\Desktop\\" + "XLApp" + ".lnk")) return false;
+            if (File.Exists(userProfile + "\\Desktop\\" + "XLApp" + ".lnk")) return;
 
             DialogResult result1 = MessageBox.Show("Démarrer le lancement d'initialisation de l'application?",
                                                     "XLApp",
@@ -317,7 +318,9 @@ namespace XLAppAddIn {
 
                 //en attendant, la demande a été fait manuellement à l'utilisateur dans la méthod qui appelle le  InitiateFirstLaunch()
 
-
+                List<int> oldExcelIDs = new List<int>();
+                Process[] excelProcesses = Process.GetProcessesByName("Excel");
+                foreach (Process pro in excelProcesses) { oldExcelIDs.Add(pro.Id); }
 
                 Excel.Application xlApp;
 
@@ -345,14 +348,40 @@ namespace XLAppAddIn {
                 //xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
 
-                //xlApp.Visible = true;
-                // xlApp = null;
+                //xlApp.Visible = true
+                //xlWorkBook = null;
+                //xlApp = null;
+
+                // updateDeskTopShortCutDescription("XLApp");
+                System.Windows.MessageBox.Show("Pour utiliser l'application, veuillez lancer le raccourci par votre bureau ou par le menu démarrer.", "XLApp");
+
+
+                Globals.Ribbons.ManageTaskPaneRibbon.tab2.Visible = false;
+                AddInUtilities.UnConnectAddin();
 
                 Globals.ThisAddIn.Application.Cursor = Microsoft.Office.Interop.Excel.XlMousePointer.xlDefault;
-                return true;
+                xlWorkBook = null;
+                xlApp = null;
+
+                // https://stackoverflow.com/questions/17777545/closing-excel-application-process-in-c-sharp-after-data-access
+
+                //--------Take the list of excel processes again and compare the IDs, if the Id is not in the old list is the one we just created, let's kill it!------
+                excelProcesses = Process.GetProcessesByName("Excel");
+                foreach (Process proc in excelProcesses) {
+                    if (!oldExcelIDs.Contains(proc.Id)) {
+                        try {
+                            proc.Kill();
+                        } catch {
+                        }
+                    }
+                }
+
+                return;
             }
             //si l'utilisateur ne veut pas démarrer l'app initialisation:
-            return false;
+            Globals.Ribbons.ManageTaskPaneRibbon.tab2.Visible = false;
+            AddInUtilities.UnConnectAddin();
+            return;
         }
 
         internal static void ShowParamProjet() {
