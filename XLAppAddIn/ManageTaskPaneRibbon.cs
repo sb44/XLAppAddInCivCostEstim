@@ -52,15 +52,30 @@ namespace XLAppAddIn
                 string userProfile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
                 if (!System.IO.File.Exists(userProfile + "\\Desktop\\" + "XLApp" + ".lnk")) {
                     // code si aucun raccourci sur le bureau :
+                    string msgErr = "";
+
+                    // vérifier si c'est au moins excel 2013 et 64 bit (version 15)
+                    int noVers = int.Parse(Globals.ThisAddIn.Application.Version.ToString().Split('.')[0]);
+
+                    if (noVers < 15) {
+                        msgErr = "Pour finaliser l'installation, la version d'Excel 2013 ou plus récente est requise, option 64 bit.";
+                    }
 
                     //vérifier si l'accès à la sécurité est activé avant de poursuivre, sinon, informez l'utilisateur comment le faire.
                     try {
                         var VDP = Globals.ThisAddIn.Application.ActiveWorkbook.VBProject;
                         if (VDP != null) VDP = null;
                     } catch {
-                        System.Windows.MessageBox.Show("Pour poursuivre l'installation, veuillez configurer une option de sécurité en suivant cette procédure :\n\nFichier > Options > Paramètres du Centre de gestion de la confidentialité > Paramètres des macros > Cocher \"Accès approuv au modèle d'objet du projet VBA\"", "XLApp");
+                        if (msgErr != "")
+                            msgErr += "\n\nEnsuite, vous devez configurer une option de sécurité dans Excel en suivant cette procédure :\n\nFichier > Options > Paramètres du Centre de gestion de la confidentialité > Paramètres des macros > Cocher \"Accès approuv au modèle d'objet du projet VBA\"";
+                        else
+                             msgErr += "Pour finaliser l'installation, configurer une option de sécurité en suivant cette procédure :\n\nFichier > Options > Paramètres du Centre de gestion de la confidentialité > Paramètres des macros > Cocher \"Accès approuv au modèle d'objet du projet VBA\"";
+                    }
+
+                    if (msgErr != "") {
+                        System.Windows.MessageBox.Show(msgErr, "XLApp");
                         toggleButton1.Checked = false;
-                            return;
+                        return;
                     }
 
 
