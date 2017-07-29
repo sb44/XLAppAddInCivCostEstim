@@ -37,6 +37,7 @@ namespace XLAppAddIn {
         string GetClickOnceLocation();
         string CurrentVersion();
         string InstallUpdateSyncWithInfo();
+
         //bool GetIsAddIn(); est une static bool ici, bas, donc pourrait aller dans
         // une autre classe à part car ne peut être callé dans Excel
     }
@@ -284,6 +285,8 @@ namespace XLAppAddIn {
                     return Globals.ThisAddIn.TaskPaneEstImposWPF;
             }
         }
+
+
 
         //[DllImport("user32.dll", EntryPoint = "FindWindowW")]
         //public static extern System.IntPtr FindWindowW([System.Runtime.InteropServices.InAttribute()] [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPWStr)] string lpClassName, [System.Runtime.InteropServices.InAttribute()] [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPWStr)] string lpWindowName);
@@ -582,7 +585,10 @@ namespace XLAppAddIn {
         {
             Globals.ThisAddIn.Application.Run("IMPRBORD");
         }
-
+        internal static void ImportSoum() 
+        {
+            Globals.ThisAddIn.Application.Run("importBordereauExistant");
+        }
         //fin gestionnaire
         //déplacement
         public static void Coller()

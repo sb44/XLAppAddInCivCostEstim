@@ -143,6 +143,8 @@
             this.buttonMEP = this.Factory.CreateRibbonButton();
             this.separator8 = this.Factory.CreateRibbonSeparator();
             this.buttonAffMsqUnit = this.Factory.CreateRibbonButton();
+            this.buttonImportSoum = this.Factory.CreateRibbonButton();
+            this.separator9 = this.Factory.CreateRibbonSeparator();
             this.tab2.SuspendLayout();
             this.group1.SuspendLayout();
             this.groupGestProjet.SuspendLayout();
@@ -924,6 +926,8 @@
             // 
             // groupBordereau
             // 
+            this.groupBordereau.Items.Add(this.buttonImportSoum);
+            this.groupBordereau.Items.Add(this.separator9);
             this.groupBordereau.Items.Add(this.buttonImp);
             this.groupBordereau.Items.Add(this.buttonSignAuto);
             this.groupBordereau.Items.Add(this.buttonZImpAuto);
@@ -978,6 +982,19 @@
             this.buttonAffMsqUnit.OfficeImageId = "FrameCreateLeft";
             this.buttonAffMsqUnit.ShowImage = true;
             this.buttonAffMsqUnit.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonAffMsqUnit_Click);
+            // 
+            // buttonImportSoum
+            // 
+            this.buttonImportSoum.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.buttonImportSoum.Label = "Importation soumission";
+            this.buttonImportSoum.Name = "buttonImportSoum";
+            this.buttonImportSoum.OfficeImageId = "OutlineSubtotals";
+            this.buttonImportSoum.ShowImage = true;
+            this.buttonImportSoum.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonImportSoum_Click);
+            // 
+            // separator9
+            // 
+            this.separator9.Name = "separator9";
             // 
             // ManageTaskPaneRibbon
             // 
@@ -1108,6 +1125,8 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonCopy;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonPaste;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonParamProjet;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonImportSoum;
+        internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator9;
     }
 
     partial class ThisRibbonCollection
