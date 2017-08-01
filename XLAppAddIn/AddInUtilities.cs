@@ -287,7 +287,6 @@ namespace XLAppAddIn {
         }
 
 
-
         //[DllImport("user32.dll", EntryPoint = "FindWindowW")]
         //public static extern System.IntPtr FindWindowW([System.Runtime.InteropServices.InAttribute()] [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPWStr)] string lpClassName, [System.Runtime.InteropServices.InAttribute()] [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.LPWStr)] string lpWindowName);
 
@@ -638,6 +637,13 @@ namespace XLAppAddIn {
         {
             Globals.ThisAddIn.Application.Run("FilterProduitsByLetterAndGoToFirstLetter", letter);
         }
+
+        internal static void SelectIconForRapp() {
+            Globals.ThisAddIn.Application.Run("SelectIconForRapp");
+
+        }
+
+
     }
 
     }

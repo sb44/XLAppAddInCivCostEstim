@@ -381,10 +381,7 @@ namespace XLAppAddIn
             AddInUtilities.ZoneImpAuto();
         }
 
-        private void buttonMEP_Click(object sender, RibbonControlEventArgs e)
-        {
-            AddInUtilities.ClickMEP();
-        }
+
 
         private void buttonAffMsqUnit_Click(object sender, RibbonControlEventArgs e)
         {
@@ -397,6 +394,19 @@ namespace XLAppAddIn
 
         private void buttonImportSoum_Click(object sender, RibbonControlEventArgs e) {
             AddInUtilities.ImportSoum();
+        }
+
+        private void buttonZImpAutoRessP_Click(object sender, RibbonControlEventArgs e) {
+            AddInUtilities.ZoneImpAuto();
+        }
+
+
+        private void buttonIconRessP_Click(object sender, RibbonControlEventArgs e) {
+            AddInUtilities.SelectIconForRapp();
+        }
+
+        private void buttonIconB_Click(object sender, RibbonControlEventArgs e) {
+            AddInUtilities.SelectIconForRapp();
         }
     }
 }

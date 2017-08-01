@@ -35,7 +35,6 @@
         private void InitializeComponent()
         {
             Microsoft.Office.Tools.Ribbon.RibbonDialogLauncher ribbonDialogLauncherImpl1 = this.Factory.CreateRibbonDialogLauncher();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageTaskPaneRibbon));
             Microsoft.Office.Tools.Ribbon.RibbonDialogLauncher ribbonDialogLauncherImpl2 = this.Factory.CreateRibbonDialogLauncher();
             Microsoft.Office.Tools.Ribbon.RibbonDropDownItem ribbonDropDownItemImpl1 = this.Factory.CreateRibbonDropDownItem();
             Microsoft.Office.Tools.Ribbon.RibbonDropDownItem ribbonDropDownItemImpl2 = this.Factory.CreateRibbonDropDownItem();
@@ -53,56 +52,66 @@
             Microsoft.Office.Tools.Ribbon.RibbonDropDownItem ribbonDropDownItemImpl14 = this.Factory.CreateRibbonDropDownItem();
             Microsoft.Office.Tools.Ribbon.RibbonDropDownItem ribbonDropDownItemImpl15 = this.Factory.CreateRibbonDropDownItem();
             Microsoft.Office.Tools.Ribbon.RibbonDropDownItem ribbonDropDownItemImpl16 = this.Factory.CreateRibbonDropDownItem();
+            Microsoft.Office.Tools.Ribbon.RibbonDialogLauncher ribbonDialogLauncherImpl3 = this.Factory.CreateRibbonDialogLauncher();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageTaskPaneRibbon));
             this.tab2 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
-            this.toggleButton1 = this.Factory.CreateRibbonToggleButton();
             this.groupGestProjet = this.Factory.CreateRibbonGroup();
+            this.groupDeplacement = this.Factory.CreateRibbonGroup();
+            this.groupNavigation = this.Factory.CreateRibbonGroup();
+            this.separator4 = this.Factory.CreateRibbonSeparator();
+            this.groupSaisieItems = this.Factory.CreateRibbonGroup();
+            this.separator3 = this.Factory.CreateRibbonSeparator();
+            this.separator1 = this.Factory.CreateRibbonSeparator();
+            this.box1 = this.Factory.CreateRibbonBox();
+            this.comboBoxLignes = this.Factory.CreateRibbonComboBox();
+            this.separator5 = this.Factory.CreateRibbonSeparator();
+            this.box2 = this.Factory.CreateRibbonBox();
+            this.separator2 = this.Factory.CreateRibbonSeparator();
+            this.separator6 = this.Factory.CreateRibbonSeparator();
+            this.groupRessources = this.Factory.CreateRibbonGroup();
+            this.buttonGroup1 = this.Factory.CreateRibbonButtonGroup();
+            this.buttonGroup2 = this.Factory.CreateRibbonButtonGroup();
+            this.buttonGroup3 = this.Factory.CreateRibbonButtonGroup();
+            this.separator7 = this.Factory.CreateRibbonSeparator();
+            this.groupRessProj = this.Factory.CreateRibbonGroup();
+            this.separator10 = this.Factory.CreateRibbonSeparator();
+            this.labelBogus = this.Factory.CreateRibbonLabel();
+            this.groupBordereau = this.Factory.CreateRibbonGroup();
+            this.separator9 = this.Factory.CreateRibbonSeparator();
+            this.separator8 = this.Factory.CreateRibbonSeparator();
+            this.toggleButton1 = this.Factory.CreateRibbonToggleButton();
             this.buttonNouvP = this.Factory.CreateRibbonButton();
             this.buttonOuvrirP = this.Factory.CreateRibbonButton();
             this.buttonEnregP = this.Factory.CreateRibbonButton();
             this.buttonFermerProjet = this.Factory.CreateRibbonButton();
             this.buttonParamProjet = this.Factory.CreateRibbonButton();
             this.buttonEnregSous = this.Factory.CreateRibbonButton();
-            this.labelBogus = this.Factory.CreateRibbonLabel();
-            this.groupDeplacement = this.Factory.CreateRibbonGroup();
             this.buttonPaste = this.Factory.CreateRibbonButton();
             this.buttonCopy = this.Factory.CreateRibbonButton();
             this.buttonCut = this.Factory.CreateRibbonButton();
             this.buttonClearClip = this.Factory.CreateRibbonButton();
-            this.groupNavigation = this.Factory.CreateRibbonGroup();
             this.buttonNavFirst = this.Factory.CreateRibbonButton();
             this.buttonNavPrev = this.Factory.CreateRibbonButton();
             this.buttonNavNext = this.Factory.CreateRibbonButton();
             this.buttonNavLast = this.Factory.CreateRibbonButton();
-            this.separator4 = this.Factory.CreateRibbonSeparator();
             this.buttonAllerArt = this.Factory.CreateRibbonButton();
             this.buttonParam = this.Factory.CreateRibbonButton();
             this.buttonOrder = this.Factory.CreateRibbonButton();
-            this.groupSaisieItems = this.Factory.CreateRibbonGroup();
             this.galleryImport = this.Factory.CreateRibbonGallery();
             this.buttonImportExcel = this.Factory.CreateRibbonButton();
             this.buttonImportAccess = this.Factory.CreateRibbonButton();
             this.buttonPressePapier = this.Factory.CreateRibbonButton();
-            this.separator3 = this.Factory.CreateRibbonSeparator();
             this.buttonArt = this.Factory.CreateRibbonButton();
             this.buttonArtAss = this.Factory.CreateRibbonButton();
             this.buttonAss = this.Factory.CreateRibbonButton();
-            this.separator1 = this.Factory.CreateRibbonSeparator();
-            this.box1 = this.Factory.CreateRibbonBox();
             this.buttonLignes = this.Factory.CreateRibbonButton();
-            this.comboBoxLignes = this.Factory.CreateRibbonComboBox();
             this.buttonFormula = this.Factory.CreateRibbonButton();
-            this.separator5 = this.Factory.CreateRibbonSeparator();
-            this.box2 = this.Factory.CreateRibbonBox();
             this.buttonSupLigne = this.Factory.CreateRibbonButton();
             this.buttonSupProd = this.Factory.CreateRibbonButton();
             this.buttonSupArt = this.Factory.CreateRibbonButton();
-            this.separator2 = this.Factory.CreateRibbonSeparator();
             this.buttonRefr = this.Factory.CreateRibbonButton();
-            this.separator6 = this.Factory.CreateRibbonSeparator();
             this.toggleButtonVerif = this.Factory.CreateRibbonToggleButton();
-            this.groupRessources = this.Factory.CreateRibbonGroup();
-            this.buttonGroup1 = this.Factory.CreateRibbonButtonGroup();
             this.buttonA = this.Factory.CreateRibbonButton();
             this.buttonB = this.Factory.CreateRibbonButton();
             this.buttonC = this.Factory.CreateRibbonButton();
@@ -112,7 +121,6 @@
             this.buttonG = this.Factory.CreateRibbonButton();
             this.buttonH = this.Factory.CreateRibbonButton();
             this.buttonI = this.Factory.CreateRibbonButton();
-            this.buttonGroup2 = this.Factory.CreateRibbonButtonGroup();
             this.buttonJ = this.Factory.CreateRibbonButton();
             this.buttonK = this.Factory.CreateRibbonButton();
             this.buttonL = this.Factory.CreateRibbonButton();
@@ -122,7 +130,6 @@
             this.buttonP = this.Factory.CreateRibbonButton();
             this.buttonQ = this.Factory.CreateRibbonButton();
             this.buttonR = this.Factory.CreateRibbonButton();
-            this.buttonGroup3 = this.Factory.CreateRibbonButtonGroup();
             this.buttonS = this.Factory.CreateRibbonButton();
             this.buttonT = this.Factory.CreateRibbonButton();
             this.buttonU = this.Factory.CreateRibbonButton();
@@ -132,19 +139,16 @@
             this.buttonY = this.Factory.CreateRibbonButton();
             this.buttonZ = this.Factory.CreateRibbonButton();
             this.button0 = this.Factory.CreateRibbonButton();
-            this.separator7 = this.Factory.CreateRibbonSeparator();
             this.buttonRefrRess = this.Factory.CreateRibbonButton();
-            this.groupRessProj = this.Factory.CreateRibbonGroup();
             this.buttonProdRess = this.Factory.CreateRibbonButton();
-            this.groupBordereau = this.Factory.CreateRibbonGroup();
+            this.buttonZImpAutoRessP = this.Factory.CreateRibbonButton();
+            this.buttonIconRessP = this.Factory.CreateRibbonButton();
+            this.buttonImportSoum = this.Factory.CreateRibbonButton();
             this.buttonImp = this.Factory.CreateRibbonButton();
             this.buttonSignAuto = this.Factory.CreateRibbonButton();
             this.buttonZImpAuto = this.Factory.CreateRibbonButton();
-            this.buttonMEP = this.Factory.CreateRibbonButton();
-            this.separator8 = this.Factory.CreateRibbonSeparator();
+            this.buttonIconB = this.Factory.CreateRibbonButton();
             this.buttonAffMsqUnit = this.Factory.CreateRibbonButton();
-            this.buttonImportSoum = this.Factory.CreateRibbonButton();
-            this.separator9 = this.Factory.CreateRibbonSeparator();
             this.tab2.SuspendLayout();
             this.group1.SuspendLayout();
             this.groupGestProjet.SuspendLayout();
@@ -173,6 +177,7 @@
             this.tab2.Groups.Add(this.groupBordereau);
             this.tab2.Label = "XLApp";
             this.tab2.Name = "tab2";
+            this.tab2.Position = this.Factory.RibbonPosition.BeforeOfficeId("TabAddIns");
             // 
             // group1
             // 
@@ -181,6 +186,242 @@
             this.group1.Items.Add(this.toggleButton1);
             this.group1.Label = "  Application Excel O365";
             this.group1.Name = "group1";
+            // 
+            // groupGestProjet
+            // 
+            this.groupGestProjet.Items.Add(this.buttonNouvP);
+            this.groupGestProjet.Items.Add(this.buttonOuvrirP);
+            this.groupGestProjet.Items.Add(this.buttonEnregP);
+            this.groupGestProjet.Items.Add(this.buttonFermerProjet);
+            this.groupGestProjet.Items.Add(this.buttonParamProjet);
+            this.groupGestProjet.Items.Add(this.buttonEnregSous);
+            this.groupGestProjet.Label = "Gestionnaire de projets";
+            this.groupGestProjet.Name = "groupGestProjet";
+            this.groupGestProjet.Visible = false;
+            // 
+            // groupDeplacement
+            // 
+            this.groupDeplacement.DialogLauncher = ribbonDialogLauncherImpl2;
+            this.groupDeplacement.Items.Add(this.buttonPaste);
+            this.groupDeplacement.Items.Add(this.buttonCopy);
+            this.groupDeplacement.Items.Add(this.buttonCut);
+            this.groupDeplacement.Items.Add(this.buttonClearClip);
+            this.groupDeplacement.Label = "Déplacement";
+            this.groupDeplacement.Name = "groupDeplacement";
+            this.groupDeplacement.Visible = false;
+            this.groupDeplacement.DialogLauncherClick += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.groupDeplacement_DialogLauncherClick);
+            // 
+            // groupNavigation
+            // 
+            this.groupNavigation.Items.Add(this.buttonNavFirst);
+            this.groupNavigation.Items.Add(this.buttonNavPrev);
+            this.groupNavigation.Items.Add(this.buttonNavNext);
+            this.groupNavigation.Items.Add(this.buttonNavLast);
+            this.groupNavigation.Items.Add(this.separator4);
+            this.groupNavigation.Items.Add(this.buttonAllerArt);
+            this.groupNavigation.Items.Add(this.buttonParam);
+            this.groupNavigation.Items.Add(this.buttonOrder);
+            this.groupNavigation.Label = "Navigation";
+            this.groupNavigation.Name = "groupNavigation";
+            this.groupNavigation.Visible = false;
+            // 
+            // separator4
+            // 
+            this.separator4.Name = "separator4";
+            // 
+            // groupSaisieItems
+            // 
+            this.groupSaisieItems.Items.Add(this.galleryImport);
+            this.groupSaisieItems.Items.Add(this.separator3);
+            this.groupSaisieItems.Items.Add(this.buttonArt);
+            this.groupSaisieItems.Items.Add(this.buttonArtAss);
+            this.groupSaisieItems.Items.Add(this.buttonAss);
+            this.groupSaisieItems.Items.Add(this.separator1);
+            this.groupSaisieItems.Items.Add(this.box1);
+            this.groupSaisieItems.Items.Add(this.separator5);
+            this.groupSaisieItems.Items.Add(this.box2);
+            this.groupSaisieItems.Items.Add(this.separator2);
+            this.groupSaisieItems.Items.Add(this.buttonRefr);
+            this.groupSaisieItems.Items.Add(this.separator6);
+            this.groupSaisieItems.Items.Add(this.toggleButtonVerif);
+            this.groupSaisieItems.Label = "Saisie d\'items";
+            this.groupSaisieItems.Name = "groupSaisieItems";
+            this.groupSaisieItems.Visible = false;
+            // 
+            // separator3
+            // 
+            this.separator3.Name = "separator3";
+            // 
+            // separator1
+            // 
+            this.separator1.Name = "separator1";
+            // 
+            // box1
+            // 
+            this.box1.BoxStyle = Microsoft.Office.Tools.Ribbon.RibbonBoxStyle.Vertical;
+            this.box1.Items.Add(this.buttonLignes);
+            this.box1.Items.Add(this.comboBoxLignes);
+            this.box1.Items.Add(this.buttonFormula);
+            this.box1.Name = "box1";
+            // 
+            // comboBoxLignes
+            // 
+            ribbonDropDownItemImpl1.Label = "+ 1 ligne";
+            ribbonDropDownItemImpl2.Label = "+ 2";
+            ribbonDropDownItemImpl3.Label = "+ 3";
+            ribbonDropDownItemImpl4.Label = "+ 4";
+            ribbonDropDownItemImpl5.Label = "+ 5";
+            ribbonDropDownItemImpl6.Label = "+ 6";
+            ribbonDropDownItemImpl7.Label = "+ 7";
+            ribbonDropDownItemImpl8.Label = "+ 8";
+            ribbonDropDownItemImpl9.Label = "+ 9";
+            ribbonDropDownItemImpl10.Label = "+ 10";
+            ribbonDropDownItemImpl11.Label = "+ 11";
+            ribbonDropDownItemImpl12.Label = "+ 12";
+            ribbonDropDownItemImpl13.Label = "+ 13";
+            ribbonDropDownItemImpl14.Label = "+ 14";
+            ribbonDropDownItemImpl15.Label = "+ 15";
+            ribbonDropDownItemImpl16.Label = "+ 16";
+            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl1);
+            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl2);
+            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl3);
+            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl4);
+            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl5);
+            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl6);
+            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl7);
+            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl8);
+            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl9);
+            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl10);
+            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl11);
+            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl12);
+            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl13);
+            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl14);
+            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl15);
+            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl16);
+            this.comboBoxLignes.Label = " ";
+            this.comboBoxLignes.MaxLength = 16;
+            this.comboBoxLignes.Name = "comboBoxLignes";
+            this.comboBoxLignes.ShowImage = true;
+            this.comboBoxLignes.SizeString = "+ 1 ligne";
+            this.comboBoxLignes.Text = "+ 1 ligne";
+            this.comboBoxLignes.TextChanged += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.comboBoxLignes_TextChanged);
+            // 
+            // separator5
+            // 
+            this.separator5.Name = "separator5";
+            // 
+            // box2
+            // 
+            this.box2.BoxStyle = Microsoft.Office.Tools.Ribbon.RibbonBoxStyle.Vertical;
+            this.box2.Items.Add(this.buttonSupLigne);
+            this.box2.Items.Add(this.buttonSupProd);
+            this.box2.Items.Add(this.buttonSupArt);
+            this.box2.Name = "box2";
+            // 
+            // separator2
+            // 
+            this.separator2.Name = "separator2";
+            // 
+            // separator6
+            // 
+            this.separator6.Name = "separator6";
+            // 
+            // groupRessources
+            // 
+            this.groupRessources.Items.Add(this.buttonGroup1);
+            this.groupRessources.Items.Add(this.buttonGroup2);
+            this.groupRessources.Items.Add(this.buttonGroup3);
+            this.groupRessources.Items.Add(this.separator7);
+            this.groupRessources.Items.Add(this.buttonRefrRess);
+            this.groupRessources.Label = "Saisie de ressources";
+            this.groupRessources.Name = "groupRessources";
+            this.groupRessources.Visible = false;
+            // 
+            // buttonGroup1
+            // 
+            this.buttonGroup1.Items.Add(this.buttonA);
+            this.buttonGroup1.Items.Add(this.buttonB);
+            this.buttonGroup1.Items.Add(this.buttonC);
+            this.buttonGroup1.Items.Add(this.buttonD);
+            this.buttonGroup1.Items.Add(this.buttonE);
+            this.buttonGroup1.Items.Add(this.buttonF);
+            this.buttonGroup1.Items.Add(this.buttonG);
+            this.buttonGroup1.Items.Add(this.buttonH);
+            this.buttonGroup1.Items.Add(this.buttonI);
+            this.buttonGroup1.Name = "buttonGroup1";
+            // 
+            // buttonGroup2
+            // 
+            this.buttonGroup2.Items.Add(this.buttonJ);
+            this.buttonGroup2.Items.Add(this.buttonK);
+            this.buttonGroup2.Items.Add(this.buttonL);
+            this.buttonGroup2.Items.Add(this.buttonM);
+            this.buttonGroup2.Items.Add(this.buttonN);
+            this.buttonGroup2.Items.Add(this.buttonO);
+            this.buttonGroup2.Items.Add(this.buttonP);
+            this.buttonGroup2.Items.Add(this.buttonQ);
+            this.buttonGroup2.Items.Add(this.buttonR);
+            this.buttonGroup2.Name = "buttonGroup2";
+            // 
+            // buttonGroup3
+            // 
+            this.buttonGroup3.Items.Add(this.buttonS);
+            this.buttonGroup3.Items.Add(this.buttonT);
+            this.buttonGroup3.Items.Add(this.buttonU);
+            this.buttonGroup3.Items.Add(this.buttonV);
+            this.buttonGroup3.Items.Add(this.buttonW);
+            this.buttonGroup3.Items.Add(this.buttonX);
+            this.buttonGroup3.Items.Add(this.buttonY);
+            this.buttonGroup3.Items.Add(this.buttonZ);
+            this.buttonGroup3.Items.Add(this.button0);
+            this.buttonGroup3.Name = "buttonGroup3";
+            // 
+            // separator7
+            // 
+            this.separator7.Name = "separator7";
+            // 
+            // groupRessProj
+            // 
+            this.groupRessProj.DialogLauncher = ribbonDialogLauncherImpl3;
+            this.groupRessProj.Items.Add(this.buttonProdRess);
+            this.groupRessProj.Items.Add(this.separator10);
+            this.groupRessProj.Items.Add(this.labelBogus);
+            this.groupRessProj.Items.Add(this.buttonZImpAutoRessP);
+            this.groupRessProj.Items.Add(this.buttonIconRessP);
+            this.groupRessProj.Label = "Ressources de projet";
+            this.groupRessProj.Name = "groupRessProj";
+            this.groupRessProj.Visible = false;
+            // 
+            // separator10
+            // 
+            this.separator10.Name = "separator10";
+            // 
+            // labelBogus
+            // 
+            this.labelBogus.Label = " ";
+            this.labelBogus.Name = "labelBogus";
+            // 
+            // groupBordereau
+            // 
+            this.groupBordereau.Items.Add(this.buttonImportSoum);
+            this.groupBordereau.Items.Add(this.separator9);
+            this.groupBordereau.Items.Add(this.buttonImp);
+            this.groupBordereau.Items.Add(this.buttonSignAuto);
+            this.groupBordereau.Items.Add(this.buttonZImpAuto);
+            this.groupBordereau.Items.Add(this.buttonIconB);
+            this.groupBordereau.Items.Add(this.separator8);
+            this.groupBordereau.Items.Add(this.buttonAffMsqUnit);
+            this.groupBordereau.Label = "Configuration de bordereau";
+            this.groupBordereau.Name = "groupBordereau";
+            this.groupBordereau.Visible = false;
+            // 
+            // separator9
+            // 
+            this.separator9.Name = "separator9";
+            // 
+            // separator8
+            // 
+            this.separator8.Name = "separator8";
             // 
             // toggleButton1
             // 
@@ -193,19 +434,6 @@
             this.toggleButton1.ShowImage = true;
             this.toggleButton1.SuperTip = "Afficher/Masquer la barre des tâches vertical";
             this.toggleButton1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.toggleButton1_Click);
-            // 
-            // groupGestProjet
-            // 
-            this.groupGestProjet.Items.Add(this.buttonNouvP);
-            this.groupGestProjet.Items.Add(this.buttonOuvrirP);
-            this.groupGestProjet.Items.Add(this.buttonEnregP);
-            this.groupGestProjet.Items.Add(this.buttonFermerProjet);
-            this.groupGestProjet.Items.Add(this.buttonParamProjet);
-            this.groupGestProjet.Items.Add(this.buttonEnregSous);
-            this.groupGestProjet.Items.Add(this.labelBogus);
-            this.groupGestProjet.Label = "Gestionnaire de projets";
-            this.groupGestProjet.Name = "groupGestProjet";
-            this.groupGestProjet.Visible = false;
             // 
             // buttonNouvP
             // 
@@ -255,23 +483,6 @@
             this.buttonEnregSous.ShowImage = true;
             this.buttonEnregSous.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonEnregSous_Click);
             // 
-            // labelBogus
-            // 
-            this.labelBogus.Label = " ";
-            this.labelBogus.Name = "labelBogus";
-            // 
-            // groupDeplacement
-            // 
-            this.groupDeplacement.DialogLauncher = ribbonDialogLauncherImpl2;
-            this.groupDeplacement.Items.Add(this.buttonPaste);
-            this.groupDeplacement.Items.Add(this.buttonCopy);
-            this.groupDeplacement.Items.Add(this.buttonCut);
-            this.groupDeplacement.Items.Add(this.buttonClearClip);
-            this.groupDeplacement.Label = "Déplacement";
-            this.groupDeplacement.Name = "groupDeplacement";
-            this.groupDeplacement.Visible = false;
-            this.groupDeplacement.DialogLauncherClick += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.groupDeplacement_DialogLauncherClick);
-            // 
             // buttonPaste
             // 
             this.buttonPaste.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -306,20 +517,6 @@
             this.buttonClearClip.OfficeImageId = "PasteInk";
             this.buttonClearClip.ShowImage = true;
             this.buttonClearClip.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonClearClip_Click);
-            // 
-            // groupNavigation
-            // 
-            this.groupNavigation.Items.Add(this.buttonNavFirst);
-            this.groupNavigation.Items.Add(this.buttonNavPrev);
-            this.groupNavigation.Items.Add(this.buttonNavNext);
-            this.groupNavigation.Items.Add(this.buttonNavLast);
-            this.groupNavigation.Items.Add(this.separator4);
-            this.groupNavigation.Items.Add(this.buttonAllerArt);
-            this.groupNavigation.Items.Add(this.buttonParam);
-            this.groupNavigation.Items.Add(this.buttonOrder);
-            this.groupNavigation.Label = "Navigation";
-            this.groupNavigation.Name = "groupNavigation";
-            this.groupNavigation.Visible = false;
             // 
             // buttonNavFirst
             // 
@@ -357,10 +554,6 @@
             this.buttonNavLast.ShowImage = true;
             this.buttonNavLast.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonNavLast_Click);
             // 
-            // separator4
-            // 
-            this.separator4.Name = "separator4";
-            // 
             // buttonAllerArt
             // 
             this.buttonAllerArt.Label = "Aller à Article";
@@ -387,25 +580,6 @@
             this.buttonOrder.ScreenTip = "Ordonner Articles";
             this.buttonOrder.ShowImage = true;
             this.buttonOrder.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonOrder_Click);
-            // 
-            // groupSaisieItems
-            // 
-            this.groupSaisieItems.Items.Add(this.galleryImport);
-            this.groupSaisieItems.Items.Add(this.separator3);
-            this.groupSaisieItems.Items.Add(this.buttonArt);
-            this.groupSaisieItems.Items.Add(this.buttonArtAss);
-            this.groupSaisieItems.Items.Add(this.buttonAss);
-            this.groupSaisieItems.Items.Add(this.separator1);
-            this.groupSaisieItems.Items.Add(this.box1);
-            this.groupSaisieItems.Items.Add(this.separator5);
-            this.groupSaisieItems.Items.Add(this.box2);
-            this.groupSaisieItems.Items.Add(this.separator2);
-            this.groupSaisieItems.Items.Add(this.buttonRefr);
-            this.groupSaisieItems.Items.Add(this.separator6);
-            this.groupSaisieItems.Items.Add(this.toggleButtonVerif);
-            this.groupSaisieItems.Label = "Saisie d\'items";
-            this.groupSaisieItems.Name = "groupSaisieItems";
-            this.groupSaisieItems.Visible = false;
             // 
             // galleryImport
             // 
@@ -442,10 +616,6 @@
             this.buttonPressePapier.ShowImage = true;
             this.buttonPressePapier.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonImport_Click);
             // 
-            // separator3
-            // 
-            this.separator3.Name = "separator3";
-            // 
             // buttonArt
             // 
             this.buttonArt.Label = "Insérer Article";
@@ -470,18 +640,6 @@
             this.buttonAss.ShowImage = true;
             this.buttonAss.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonAss_Click);
             // 
-            // separator1
-            // 
-            this.separator1.Name = "separator1";
-            // 
-            // box1
-            // 
-            this.box1.BoxStyle = Microsoft.Office.Tools.Ribbon.RibbonBoxStyle.Vertical;
-            this.box1.Items.Add(this.buttonLignes);
-            this.box1.Items.Add(this.comboBoxLignes);
-            this.box1.Items.Add(this.buttonFormula);
-            this.box1.Name = "box1";
-            // 
             // buttonLignes
             // 
             this.buttonLignes.Label = "Insérer Lignes";
@@ -490,48 +648,6 @@
             this.buttonLignes.ShowImage = true;
             this.buttonLignes.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonLignes_Click);
             // 
-            // comboBoxLignes
-            // 
-            ribbonDropDownItemImpl1.Label = "+ 1 ligne";
-            ribbonDropDownItemImpl2.Label = "+ 2";
-            ribbonDropDownItemImpl3.Label = "+ 3";
-            ribbonDropDownItemImpl4.Label = "+ 4";
-            ribbonDropDownItemImpl5.Label = "+ 5";
-            ribbonDropDownItemImpl6.Label = "+ 6";
-            ribbonDropDownItemImpl7.Label = "+ 7";
-            ribbonDropDownItemImpl8.Label = "+ 8";
-            ribbonDropDownItemImpl9.Label = "+ 9";
-            ribbonDropDownItemImpl10.Label = "+ 10";
-            ribbonDropDownItemImpl11.Label = "+ 11";
-            ribbonDropDownItemImpl12.Label = "+ 12";
-            ribbonDropDownItemImpl13.Label = "+ 13";
-            ribbonDropDownItemImpl14.Label = "+ 14";
-            ribbonDropDownItemImpl15.Label = "+ 15";
-            ribbonDropDownItemImpl16.Label = "+ 16";
-            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl1);
-            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl2);
-            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl3);
-            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl4);
-            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl5);
-            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl6);
-            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl7);
-            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl8);
-            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl9);
-            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl10);
-            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl11);
-            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl12);
-            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl13);
-            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl14);
-            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl15);
-            this.comboBoxLignes.Items.Add(ribbonDropDownItemImpl16);
-            this.comboBoxLignes.Label = " ";
-            this.comboBoxLignes.MaxLength = 16;
-            this.comboBoxLignes.Name = "comboBoxLignes";
-            this.comboBoxLignes.ShowImage = true;
-            this.comboBoxLignes.SizeString = "+ 1 ligne";
-            this.comboBoxLignes.Text = "+ 1 ligne";
-            this.comboBoxLignes.TextChanged += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.comboBoxLignes_TextChanged);
-            // 
             // buttonFormula
             // 
             this.buttonFormula.Label = "Fonction XLApp";
@@ -539,18 +655,6 @@
             this.buttonFormula.OfficeImageId = "EditFormula";
             this.buttonFormula.ShowImage = true;
             this.buttonFormula.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonFormula_Click);
-            // 
-            // separator5
-            // 
-            this.separator5.Name = "separator5";
-            // 
-            // box2
-            // 
-            this.box2.BoxStyle = Microsoft.Office.Tools.Ribbon.RibbonBoxStyle.Vertical;
-            this.box2.Items.Add(this.buttonSupLigne);
-            this.box2.Items.Add(this.buttonSupProd);
-            this.box2.Items.Add(this.buttonSupArt);
-            this.box2.Name = "box2";
             // 
             // buttonSupLigne
             // 
@@ -576,10 +680,6 @@
             this.buttonSupArt.ShowImage = true;
             this.buttonSupArt.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonSupArt_Click);
             // 
-            // separator2
-            // 
-            this.separator2.Name = "separator2";
-            // 
             // buttonRefr
             // 
             this.buttonRefr.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -589,10 +689,6 @@
             this.buttonRefr.ShowImage = true;
             this.buttonRefr.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonRefr_Click);
             // 
-            // separator6
-            // 
-            this.separator6.Name = "separator6";
-            // 
             // toggleButtonVerif
             // 
             this.toggleButtonVerif.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -601,30 +697,6 @@
             this.toggleButtonVerif.OfficeImageId = "ReviseContents";
             this.toggleButtonVerif.ShowImage = true;
             this.toggleButtonVerif.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.toggleButtonVerif_Click);
-            // 
-            // groupRessources
-            // 
-            this.groupRessources.Items.Add(this.buttonGroup1);
-            this.groupRessources.Items.Add(this.buttonGroup2);
-            this.groupRessources.Items.Add(this.buttonGroup3);
-            this.groupRessources.Items.Add(this.separator7);
-            this.groupRessources.Items.Add(this.buttonRefrRess);
-            this.groupRessources.Label = "Saisie de ressources";
-            this.groupRessources.Name = "groupRessources";
-            this.groupRessources.Visible = false;
-            // 
-            // buttonGroup1
-            // 
-            this.buttonGroup1.Items.Add(this.buttonA);
-            this.buttonGroup1.Items.Add(this.buttonB);
-            this.buttonGroup1.Items.Add(this.buttonC);
-            this.buttonGroup1.Items.Add(this.buttonD);
-            this.buttonGroup1.Items.Add(this.buttonE);
-            this.buttonGroup1.Items.Add(this.buttonF);
-            this.buttonGroup1.Items.Add(this.buttonG);
-            this.buttonGroup1.Items.Add(this.buttonH);
-            this.buttonGroup1.Items.Add(this.buttonI);
-            this.buttonGroup1.Name = "buttonGroup1";
             // 
             // buttonA
             // 
@@ -707,19 +779,6 @@
             this.buttonI.Tag = "I";
             this.buttonI.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.AtoZ_Click);
             // 
-            // buttonGroup2
-            // 
-            this.buttonGroup2.Items.Add(this.buttonJ);
-            this.buttonGroup2.Items.Add(this.buttonK);
-            this.buttonGroup2.Items.Add(this.buttonL);
-            this.buttonGroup2.Items.Add(this.buttonM);
-            this.buttonGroup2.Items.Add(this.buttonN);
-            this.buttonGroup2.Items.Add(this.buttonO);
-            this.buttonGroup2.Items.Add(this.buttonP);
-            this.buttonGroup2.Items.Add(this.buttonQ);
-            this.buttonGroup2.Items.Add(this.buttonR);
-            this.buttonGroup2.Name = "buttonGroup2";
-            // 
             // buttonJ
             // 
             this.buttonJ.Label = " ";
@@ -800,19 +859,6 @@
             this.buttonR.ShowImage = true;
             this.buttonR.Tag = "R";
             this.buttonR.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.AtoZ_Click);
-            // 
-            // buttonGroup3
-            // 
-            this.buttonGroup3.Items.Add(this.buttonS);
-            this.buttonGroup3.Items.Add(this.buttonT);
-            this.buttonGroup3.Items.Add(this.buttonU);
-            this.buttonGroup3.Items.Add(this.buttonV);
-            this.buttonGroup3.Items.Add(this.buttonW);
-            this.buttonGroup3.Items.Add(this.buttonX);
-            this.buttonGroup3.Items.Add(this.buttonY);
-            this.buttonGroup3.Items.Add(this.buttonZ);
-            this.buttonGroup3.Items.Add(this.button0);
-            this.buttonGroup3.Name = "buttonGroup3";
             // 
             // buttonS
             // 
@@ -895,10 +941,6 @@
             this.button0.Tag = "1";
             this.button0.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.AtoZ_Click);
             // 
-            // separator7
-            // 
-            this.separator7.Name = "separator7";
-            // 
             // buttonRefrRess
             // 
             this.buttonRefrRess.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -907,13 +949,6 @@
             this.buttonRefrRess.OfficeImageId = "RefreshData";
             this.buttonRefrRess.ShowImage = true;
             this.buttonRefrRess.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonRefr_Click);
-            // 
-            // groupRessProj
-            // 
-            this.groupRessProj.Items.Add(this.buttonProdRess);
-            this.groupRessProj.Label = "Ressources de projet";
-            this.groupRessProj.Name = "groupRessProj";
-            this.groupRessProj.Visible = false;
             // 
             // buttonProdRess
             // 
@@ -924,19 +959,30 @@
             this.buttonProdRess.ShowImage = true;
             this.buttonProdRess.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonProdRess_Click);
             // 
-            // groupBordereau
+            // buttonZImpAutoRessP
             // 
-            this.groupBordereau.Items.Add(this.buttonImportSoum);
-            this.groupBordereau.Items.Add(this.separator9);
-            this.groupBordereau.Items.Add(this.buttonImp);
-            this.groupBordereau.Items.Add(this.buttonSignAuto);
-            this.groupBordereau.Items.Add(this.buttonZImpAuto);
-            this.groupBordereau.Items.Add(this.buttonMEP);
-            this.groupBordereau.Items.Add(this.separator8);
-            this.groupBordereau.Items.Add(this.buttonAffMsqUnit);
-            this.groupBordereau.Label = "Configuration de bordereau";
-            this.groupBordereau.Name = "groupBordereau";
-            this.groupBordereau.Visible = false;
+            this.buttonZImpAutoRessP.Label = "Zone d\'impression automatique";
+            this.buttonZImpAutoRessP.Name = "buttonZImpAutoRessP";
+            this.buttonZImpAutoRessP.OfficeImageId = "ShowGridOutlook";
+            this.buttonZImpAutoRessP.ShowImage = true;
+            this.buttonZImpAutoRessP.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonZImpAutoRessP_Click);
+            // 
+            // buttonIconRessP
+            // 
+            this.buttonIconRessP.Label = "Icône entête rapport";
+            this.buttonIconRessP.Name = "buttonIconRessP";
+            this.buttonIconRessP.OfficeImageId = "UpdateIcon";
+            this.buttonIconRessP.ShowImage = true;
+            this.buttonIconRessP.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonIconRessP_Click);
+            // 
+            // buttonImportSoum
+            // 
+            this.buttonImportSoum.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.buttonImportSoum.Label = "Importation soumission";
+            this.buttonImportSoum.Name = "buttonImportSoum";
+            this.buttonImportSoum.OfficeImageId = "OutlineSubtotals";
+            this.buttonImportSoum.ShowImage = true;
+            this.buttonImportSoum.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonImportSoum_Click);
             // 
             // buttonImp
             // 
@@ -963,16 +1009,13 @@
             this.buttonZImpAuto.ShowImage = true;
             this.buttonZImpAuto.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonZImpAuto_Click);
             // 
-            // buttonMEP
+            // buttonIconB
             // 
-            this.buttonMEP.Label = "Mise en page";
-            this.buttonMEP.Name = "buttonMEP";
-            this.buttonMEP.ShowImage = true;
-            this.buttonMEP.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonMEP_Click);
-            // 
-            // separator8
-            // 
-            this.separator8.Name = "separator8";
+            this.buttonIconB.Label = "Icône entête rapport";
+            this.buttonIconB.Name = "buttonIconB";
+            this.buttonIconB.OfficeImageId = "UpdateIcon";
+            this.buttonIconB.ShowImage = true;
+            this.buttonIconB.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonIconB_Click);
             // 
             // buttonAffMsqUnit
             // 
@@ -982,19 +1025,6 @@
             this.buttonAffMsqUnit.OfficeImageId = "FrameCreateLeft";
             this.buttonAffMsqUnit.ShowImage = true;
             this.buttonAffMsqUnit.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonAffMsqUnit_Click);
-            // 
-            // buttonImportSoum
-            // 
-            this.buttonImportSoum.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.buttonImportSoum.Label = "Importation soumission";
-            this.buttonImportSoum.Name = "buttonImportSoum";
-            this.buttonImportSoum.OfficeImageId = "OutlineSubtotals";
-            this.buttonImportSoum.ShowImage = true;
-            this.buttonImportSoum.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonImportSoum_Click);
-            // 
-            // separator9
-            // 
-            this.separator9.Name = "separator9";
             // 
             // ManageTaskPaneRibbon
             // 
@@ -1077,7 +1107,6 @@
         public Microsoft.Office.Tools.Ribbon.RibbonGroup groupGestProjet;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton toggleButtonVerif;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonFermerProjet;
-        internal Microsoft.Office.Tools.Ribbon.RibbonLabel labelBogus;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup groupRessources;
         internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator7;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonRefrRess;
@@ -1115,7 +1144,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonProdRess;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonImp;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonZImpAuto;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonMEP;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonIconB;
         internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator8;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonAffMsqUnit;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonSignAuto;
@@ -1127,6 +1156,10 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonParamProjet;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonImportSoum;
         internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator9;
+        internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator10;
+        internal Microsoft.Office.Tools.Ribbon.RibbonLabel labelBogus;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonZImpAutoRessP;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonIconRessP;
     }
 
     partial class ThisRibbonCollection
