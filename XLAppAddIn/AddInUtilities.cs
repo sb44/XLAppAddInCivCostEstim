@@ -13,6 +13,8 @@ using System.Security.Policy;
 using System.Security.Permissions;
 using System.Diagnostics;
 using System.Collections.Generic;
+using System.Xml;
+using WinSCP;
 
 namespace XLAppAddIn {
     [ComVisible(true)]
@@ -47,7 +49,77 @@ namespace XLAppAddIn {
 
     public class AddInUtilities : IAddInUtilities
     {
-   //     https://blogs.msdn.microsoft.com/krimakey/2008/04/18/click-once-forced-updates-in-vsto-ii-a-fuller-solution/
+
+
+        // MÉTHODE FONCTIONNEL À FINIR POUR TÉLÉCHARGER DOSSIER
+        private void downloadFileFTPForUpdate() {
+
+            try {
+                ApplicationDeployment CurrentDep = ApplicationDeployment.CurrentDeployment;
+                string inputfilepath = CurrentDep.UpdateLocation.AbsolutePath.ToString(); // @"C:\Users\SB13\OneDrive\XLAppPublish\XLAppAddIn.vsto";   //string inputfilepath = @"C:\Temp\FileName.exe";
+                string ftphost = "waws-prod-yq1-003.ftp.azurewebsites.windows.net";     //string ftphost = "xxx.xx.x.xxx";          
+                string ftpfilepath = "/XLAppAddIn.vsto";  //string ftpfilepath = "/Updater/Dir1/FileName.exe";
+                string ftpfullpath = "ftp://" + ftphost + ftpfilepath;
+
+                using (System.Net.WebClient request = new System.Net.WebClient()) {
+                    request.Credentials = new System.Net.NetworkCredential(@"XLAppFTP\$XLAppFTP", "7sWxu1wkPMCqFkCf9ms7NGZwezQ0wnrDGgee7HTDltn0d8wFNxnC4Ae4TA81");
+                    byte[] fileData = request.DownloadData(ftpfullpath);
+
+                    using (FileStream file = File.Create(inputfilepath)) {
+                        file.Write(fileData, 0, fileData.Length);
+                        file.Close();
+                    }
+                }
+            } catch (Exception e) {
+                MessageBox.Show("La requête FTP afin d'obtenir la version la plus à jour disponible a échoué. \n\n" + e.Message);
+            }
+
+
+        }
+        private bool downloadFTPfolderForUpdate() {
+            try {
+                ApplicationDeployment CurrentDep = ApplicationDeployment.CurrentDeployment;
+
+                XmlDocument doc = new XmlDocument();
+                doc.Load(CurrentDep.UpdateLocation.AbsolutePath); //doc.Load(@"C:\Users\SB13\OneDrive\XLAppPublish\XLAppAddIn.vsto");
+                string flder = doc.GetElementsByTagName("dependentAssembly")[0].Attributes[1].Value.Split('\\')[1].ToString(); // retourne "XLAppAddIn_1_0_0_139"
+
+                var vstoPath = Path.GetDirectoryName(CurrentDep.UpdateLocation.AbsolutePath);
+
+                var vstoAppFilePath = vstoPath + @"\Application Files";
+                vstoAppFilePath += @"\" + flder;
+
+                System.IO.Directory.CreateDirectory(vstoAppFilePath); // If the folder does not exist yet, it will be created. If the folder exists already, the line will be ignored.
+                string ftpFolderpath = "Application Files/" + flder + "/*"; 
+                
+                // Avec WINSCP
+                // Setup session options
+                SessionOptions sessionOptions = new SessionOptions {
+                    Protocol = Protocol.Ftp,
+                    HostName = "waws-prod-yq1-003.ftp.azurewebsites.windows.net",
+                    UserName = @"XLAppFTP\$XLAppFTP",
+                    Password = "7sWxu1wkPMCqFkCf9ms7NGZwezQ0wnrDGgee7HTDltn0d8wFNxnC4Ae4TA81",
+                };
+
+                using (Session session = new Session()) {
+                    // Connect
+                    session.Open(sessionOptions);
+
+                    // Download files
+                    session.GetFiles(ftpFolderpath, vstoAppFilePath + @"\*").Check();  //session.GetFiles("/directory/to/download/*", @"C:\target\directory\*").Check();
+                }
+
+
+                return true;
+            } catch (Exception e) {
+                MessageBox.Show("Download folder exception \n\n" + e.Message);
+                return false;
+            }
+
+        }
+
+
+        //     https://blogs.msdn.microsoft.com/krimakey/2008/04/18/click-once-forced-updates-in-vsto-ii-a-fuller-solution/
         public string InstallUpdateSyncWithInfo() {
             // https://msdn.microsoft.com/en-us/library/ms404263.aspx
             UpdateCheckInfo info = null;
@@ -57,12 +129,14 @@ namespace XLAppAddIn {
 
                 if (ApplicationDeployment.IsNetworkDeployed) {
 
-                Assembly addinAssembly = Assembly.GetExecutingAssembly();
+                //TEST SASHA
+                downloadFileFTPForUpdate();
+               //FIN TEST
+
+               Assembly addinAssembly = Assembly.GetExecutingAssembly();
 
                 string CachePath = addinAssembly.CodeBase.Substring(0, addinAssembly.CodeBase.Length -
                     System.IO.Path.GetFileName(addinAssembly.CodeBase).Length);
-
-                ApplicationDeployment CurrentDep = ApplicationDeployment.CurrentDeployment;
 
                 ApplicationDeployment ad = ApplicationDeployment.CurrentDeployment;
 
@@ -79,14 +153,34 @@ namespace XLAppAddIn {
 
                 ApplicationSecurityManager.UserApplicationTrusts.Add(appTrust);
 
+                retry:
                 try {
                     info = ad.CheckForDetailedUpdate();
 
                 } catch (DeploymentDownloadException dde) {
-                    //MessageBox.Show("The new version of the application cannot be downloaded at this time. \n\nPlease check your network connection, or try again later. Error: " + dde.Message);
-                    //MessageBox.Show("La nouvelle version de l'application ne peut être télécharger en ce moment. \n\nVeuillez vérifier votre connection, ou réessayer plus tard. Erreur: " + dde.Message);
-                    return "La nouvelle version de l'application ne peut être télécharger en ce moment. \n\nVeuillez vérifier votre connection, ou réessayer plus tard. Erreur: " + dde.Message;
-                } catch (InvalidDeploymentException ide) {
+                    // À CE STADE, ON A TÉLÉCHARGÉ LE FICHIER .VSTO // SI UNE MISE À JOUR EST DISPONIBLE, L'ERREUR EST ATTRAPÉ ICI.
+
+                    //MessageBox.Show("The new version of the application cannot be downloaded at this time. \n\nPlease check your network connection, or try again later. Error: " + dde.Message); //MessageBox.Show("La nouvelle version de l'application ne peut être télécharger en ce moment. \n\nVeuillez vérifier votre connection, ou réessayer plus tard. Erreur: " + dde.Message);
+
+                    //return "La nouvelle version de l'application ne peut être télécharger en ce moment. \n\nVeuillez vérifier votre connection, ou réessayer plus tard. Erreur: " + dde.Message;
+                    DialogResult result = MessageBox.Show("Une nouvelle version de l'application est disponible et doit être téléchargé. La durée du téléchargement est d'une quinzaine (15) de secondes. \n\nSouhaitez-vous la télécharger maintenant?", "Mise à jour disponible", MessageBoxButtons.YesNo);
+                    
+                    if (result == DialogResult.Yes) {
+                        try {
+                            if (downloadFTPfolderForUpdate())
+                                goto retry;
+                            else
+                                return "La nouvelle version de l'application ne peut être télécharger en ce moment. \n\nVeuillez vérifier votre connection, ou réessayer plus tard. Erreur: " + dde.Message;
+                        } catch (Exception e) {
+                            return "La nouvelle version de l'application ne peut être télécharger en ce moment. \n\nVeuillez vérifier votre connection, ou réessayer plus tard. Erreur: " + dde.Message + "\n\n" + e.Message;
+                        }
+
+                    } else {
+                        return "Vous avez choisi de ne pas télécharger la mise à jour qui est disponible en ce moment. \n\nVeuillez réeesayer plus tard, ou communiquez avec le support pour plus d'informations.";
+                    }
+
+
+                    } catch (InvalidDeploymentException ide) {
                     //MessageBox.Show("Cannot check for a new version of the application. The ClickOnce deployment is corrupt. Please redeploy the application and try again. Error: " + ide.Message);
                     //MessageBox.Show("Impossible de vérifier pour une nouvelle version de l'application. Le déploiement ClickOnce de l'application est corrompue. Veuillez redéployez l'application et réessayer. Erreur: " + ide.Message);
                     return "Impossible de vérifier pour une nouvelle version de l'application. Le déploiement ClickOnce de l'application est corrompue. Veuillez redéployez l'application et réessayer. Erreur: " + ide.Message;
@@ -106,7 +200,7 @@ namespace XLAppAddIn {
 
                     if (!info.IsUpdateRequired) {
                         //DialogResult dr = MessageBox.Show("An update is available. Would you like to update the application now?", "Update Available", MessageBoxButtons.OKCancel);
-                        DialogResult dr = MessageBox.Show("Une mise à jour de l'application est disponible. Souhaitez-vous l'exécuter maintenant?", "XLApp - Mise à jour disponible", MessageBoxButtons.OKCancel);
+                        DialogResult dr = MessageBox.Show("La mise à jour de l'application est téléchargé et disponible. Souhaitez-vous l'exécuter maintenant?", "XLApp - Mise à jour disponible", MessageBoxButtons.OKCancel);
                         if (!(DialogResult.OK == dr)) {
                             doUpdate = false;
                             return "Mise à jour annulée."; //
@@ -126,7 +220,7 @@ namespace XLAppAddIn {
                             Uri DocPath = new Uri(Globals.ThisAddIn.Application.Path + "\\" + Globals.ThisAddIn.Application.Name); //test sb
                             Uri InstallerPath = new Uri("C:\\Program Files\\Common Files\\microsoft shared\\VSTO\\10.0\\VSTOINSTALLER.exe"); //test sb
                            // Uri RestarterPath = new Uri(CachePath + "WordRestarter.exe"); //enlève sb
-                            Uri Updatelocation = new Uri(CurrentDep.UpdateLocation.ToString());
+                            Uri Updatelocation = new Uri(ad.UpdateLocation.ToString());
 
                             //Call VSTOInstaller Explicitely in "Silent Mode"
                             Process VstoInstallerProc = new System.Diagnostics.Process();
@@ -136,7 +230,7 @@ namespace XLAppAddIn {
 
                             VstoInstallerProc.WaitForExit();
                             if (VstoInstallerProc.ExitCode == 0) {
-                                string updatedVersDL = (DateTime.Now.Year % 100).ToString() + "." + CurrentDep.UpdatedVersion.ToString();
+                                string updatedVersDL = (DateTime.Now.Year % 100).ToString() + "." + ad.UpdatedVersion.ToString();
                                 MessageBox.Show("La mise à jour de l'application à la version " + updatedVersDL + " a été réussi et sera effective au prochain redémarrage de l'application. Veuillez redémarrer l'application maintenant.", "Mise à jour - Version " + updatedVersDL);
                                 return updatedVersDL;
                             } else {
