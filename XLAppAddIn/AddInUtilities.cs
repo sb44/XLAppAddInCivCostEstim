@@ -17,7 +17,7 @@ using System.Xml;
 using WinSCP;
 
 namespace XLAppAddIn {
-    [ComVisible(true)]
+    [ComVisible(true)] //donc peut être appelé par extérieur, dont Excel vba
     public interface IAddInUtilities
     {
 
